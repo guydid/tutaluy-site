@@ -1,0 +1,43 @@
+name: Import live site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - site-files.txt
+      - .github/workflows/import-site.yml
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch site files from tutaluy.com
+        run: |
+          missing=0
+          while IFS= read -r p; do
+            [ -z "$p" ] && continue
+            mkdir -p "$(dirname "$p")"
+            if ! curl -fsSL --retry 3 --retry-delay 2 "https://tutaluy.com/$p" -o "$p"; then
+              echo "::warning::missing on live site: $p"
+              missing=$((missing+1))
+            fi
+          done < site-files.txt
+          echo "missing=$missing"
+
+      - name: Commit imported files
+        run: |
+          git config user.name "site-import-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Import live site files from tutaluy.com"
+            git push
+          fi
