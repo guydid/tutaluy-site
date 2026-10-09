@@ -239,24 +239,19 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
 });
 </script>
 
-<!-- Three.js r160: embedded in the preview build; empty in the live build (loads from jsDelivr) -->
-<script id="three-src" type="text/plain"></script>
+<!-- Three.js r160: inlined as a classic script in the self-contained preview build; the live build loads it from jsDelivr -->
+<!--__THREE_CLASSIC__-->
 
 <script type="module">
 const stage  = document.getElementById('stage3d');
 const canvas = document.getElementById('c');
 const fail = () => stage.classList.add('nogl');
 
-let THREE;
-try {
-  const src = document.getElementById('three-src').textContent;
-  if (src.length > 1000) {
-    const url = URL.createObjectURL(new Blob([src], {type:'text/javascript'}));
-    THREE = await import(url);
-  } else {
-    THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js');
-  }
-} catch (e) { console.error(e); fail(); }
+let THREE = window.THREE;
+if (!THREE) {
+  try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js'); }
+  catch (e) { console.error(e); fail(); }
+}
 
 if (THREE) init();
 
