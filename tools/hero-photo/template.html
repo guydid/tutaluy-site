@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TUTALUY — גידול מנותק מצע</title>
+<meta name="description" content="תותלוי — פתרונות גידול מנותק מצע לחקלאות מקצועית: תעלות גידול, מצעי קוקוס ופרלייט, השקיה ודישון, שתילים ופיתוח זנים.">
+<meta property="og:title" content="TUTALUY — גידול מנותק מצע">
+<meta property="og:description" content="מערכת אחת, חמש שכבות: תעלה, מצע, טפטוף, שתיל וזן.">
+<meta property="og:image" content="https://tutaluy.com/new/assets/hero/exploded.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#F5696B; --coral-deep:#e24d50;
+  --charcoal:#414042; --ink:#2b2a2c;
+  --paper:#FAF8F5; --paper-2:#f2eee8;
+  --leaf:#2E5E4E; --line:#D8D4CE;
+  --studio:#d8d5d2;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Assistant",system-ui,sans-serif;color:var(--ink);background:var(--paper);
+  -webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:"Heebo",sans-serif;line-height:1.1;margin:0}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+header{position:sticky;top:0;z-index:40;background:rgba(250,248,245,.84);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:baseline;font-family:"Heebo";font-weight:900;font-size:1.6rem;letter-spacing:-.02em;direction:ltr}
+.brand .t{color:var(--coral)} .brand .a{color:var(--charcoal)}
+.brand small{font-family:var(--mono);font-weight:500;font-size:.58rem;color:#8a857d;letter-spacing:.16em;margin-left:.6em;text-transform:uppercase}
+nav.main{display:flex;gap:26px;font-weight:600;font-size:.98rem}
+nav.main a{color:var(--charcoal);opacity:.8;transition:opacity .2s,color .2s}
+nav.main a:hover{opacity:1;color:var(--coral-deep)}
+.cta-btn{background:var(--coral);color:#fff;padding:.6em 1.15em;border-radius:999px;font-weight:700;font-size:.95rem;
+  transition:transform .15s,background .2s;display:inline-block}
+.cta-btn:hover{background:var(--coral-deep);transform:translateY(-1px)}
+@media(max-width:900px){nav.main{display:none}}
+
+.hero{padding:28px 0 36px}
+.hero .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:center}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr;gap:26px}}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;color:var(--leaf);text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:clamp(2.3rem,5.2vw,3.9rem);font-weight:900;color:var(--charcoal);letter-spacing:-.02em}
+.hero h1 .hl{color:var(--coral)}
+.lead{font-size:1.16rem;color:#5c574f;max-width:32ch;margin:18px 0 26px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-ghost{border:1.5px solid var(--line);padding:.6em 1.15em;border-radius:999px;font-weight:700;color:var(--charcoal);transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--coral);color:var(--coral-deep)}
+
+/* ---------- photo exploded-view stage ---------- */
+.stage{position:relative;width:100%;max-width:min(560px,calc((100vh - 130px) * .79));margin:0 auto;
+  aspect-ratio:__ASPECT__;background:var(--studio);border-radius:28px;overflow:hidden;isolation:isolate;
+  user-select:none;-webkit-user-select:none}
+.frame{position:absolute;left:0;width:100%;top:__FRAME_TOP__%;height:__FRAME_H__%}
+.frame img{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
+.master{z-index:6;
+  transition:opacity .45s ease .6s}
+.layer{opacity:0;transform-origin:50% 50%;will-change:transform;
+  transition:transform .95s cubic-bezier(.2,.75,.2,1) var(--d,0s),opacity .25s ease 1s,filter .25s ease}
+.l-fruit{--d:0s} .l-plants{--d:.04s} .l-drip{--d:.08s} .l-bag{--d:.12s} .l-gutter{--d:.16s}
+.stage.x .master{opacity:0;transition:opacity .3s ease}
+.stage.x .layer{opacity:1;transition:transform .95s cubic-bezier(.2,.75,.2,1) var(--d,0s),opacity .15s ease,filter .25s ease}
+__LAYER_CSS__
+/* focus one layer, dim the rest */
+.stage.x:has(.band:hover) .layer{opacity:.5}
+__FOCUS_CSS__
+
+.band{position:absolute;left:0;right:0;z-index:8;display:block;pointer-events:none;outline:none}
+.stage.x .band{pointer-events:auto;cursor:pointer}
+__BAND_CSS__
+.pill{position:absolute;left:3%;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:.45em;
+  background:rgba(255,255,255,.92);border:1px solid rgba(65,64,66,.12);border-radius:999px;padding:.32em .8em .32em .85em;
+  font:700 .9rem "Heebo",sans-serif;color:var(--charcoal);white-space:nowrap;box-shadow:0 6px 16px rgba(65,64,66,.08);
+  opacity:0;transition:opacity .35s ease,background .2s,color .2s}
+.pill .n{font-family:var(--mono);font-size:.68rem;font-weight:600;color:var(--coral)}
+.pill::after{content:"";position:absolute;right:-24px;top:50%;width:20px;border-top:1.5px dashed rgba(65,64,66,.35)}
+.stage.x .pill{opacity:1;transition:opacity .4s ease .5s,background .2s,color .2s}
+.band:hover .pill,.band:focus-visible .pill{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+.band:hover .pill .n,.band:focus-visible .pill .n{color:#ffb3b4}
+.cap{position:absolute;left:0;right:0;text-align:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  color:#8f897f;text-transform:uppercase;transition:opacity .3s ease;z-index:7;pointer-events:none}
+.cap-top{top:3.2%;direction:ltr}
+.cap-hint{bottom:4.5%}
+.stage.x .cap{opacity:0}
+@media(max-width:600px){ .pill{left:2.5%;font-size:.7rem;padding:.24em .55em;gap:.35em} .pill .n{font-size:.6rem} .pill::after{width:8px;right:-11px} .stage{border-radius:22px} }
+@media(prefers-reduced-motion:reduce){ .stage *{transition:none!important} }
+
+/* ---------- rest of page ---------- */
+.strip{background:var(--charcoal);color:#efece7}
+.strip .wrap{display:flex;gap:28px;flex-wrap:wrap;justify-content:space-between;padding:26px 20px}
+.chip{font-family:var(--mono);font-size:.88rem;color:#d7d3cc;letter-spacing:.05em;direction:ltr}
+.chip b{color:var(--coral);font-weight:600}
+.section{padding:64px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:30px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;color:var(--charcoal)}
+.section-head .idx{font-family:var(--mono);color:var(--line);font-size:3rem;font-weight:600;line-height:.8}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;transition:transform .2s,box-shadow .2s,border-color .2s;display:block}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(65,64,66,.1);border-color:transparent}
+.card .n{font-family:var(--mono);font-size:.72rem;color:var(--coral);letter-spacing:.08em}
+.card h3{font-size:1.25rem;margin:10px 0 8px;color:var(--charcoal)}
+.card p{margin:0;color:#6b665e;font-size:.96rem}
+.card .go{margin-top:14px;font-weight:700;color:var(--coral-deep);font-size:.92rem}
+.lead-sec{background:var(--paper-2)}
+.lead-box{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+@media(max-width:760px){.lead-box{grid-template-columns:1fr}}
+.lead-box h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;color:var(--charcoal)}
+.lead-box p{color:#5c574f;font-size:1.05rem}
+form{display:grid;gap:12px}
+input,select,textarea{font-family:inherit;font-size:1rem;padding:.8em .9em;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--coral)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button.submit{background:var(--coral);color:#fff;border:0;border-radius:12px;padding:.85em;font-weight:800;font-size:1.05rem;cursor:pointer;transition:background .2s}
+button.submit:hover{background:var(--coral-deep)}
+.ok{display:none;background:var(--leaf);color:#fff;padding:1em;border-radius:12px;font-weight:600;text-align:center}
+footer{background:var(--charcoal);color:#cfcbc4;padding:40px 0 30px;font-size:.95rem}
+footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a:hover{color:var(--coral)}
+footer .muted{color:#8f8a82;font-size:.85rem;margin-top:18px}
+.wa{position:fixed;inset-inline-end:18px;bottom:18px;z-index:50;background:#25D366;width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.2);transition:transform .15s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:30px;height:30px;fill:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><span class="t">tut</span><span class="a">aluy</span><small>soilless</small></a>
+    <nav class="main">
+      <a href="gutters.html">תעלות גידול</a>
+      <a href="media.html">מצעי גידול</a>
+      <a href="seedlings.html">שתילים</a>
+      <a href="breeding.html">פיתוח זנים</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <a class="cta-btn" href="#contact">דברו איתנו</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">// גידול מנותק מצע · Soilless systems</div>
+      <h1>מגדלים מעל הקרקע,<br><span class="hl">בשליטה מלאה.</span></h1>
+      <p class="lead">מערכת אחת, חמש שכבות: תעלה, מצע, טפטוף, שתיל וזן. כל שכבה מהונדסת כדי לתת לצמח בדיוק את מה שהוא צריך. רחפו מעל המערכת כדי לפרק אותה, ולחצו על כל שכבה.</p>
+      <div class="hero-cta">
+        <a class="cta-btn" href="#contact">לתיאום ייעוץ</a>
+        <a class="btn-ghost" href="gutters.html">לפרויקטים שלנו</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="stage" id="stage">
+        <div class="cap cap-top">tutaluy · soilless system · 5 layers</div>
+        <div class="frame">
+          <img class="layer l-gutter" src="__IMG_gutter__" alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-bag"    src="__IMG_bag__"    alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-drip"   src="__IMG_drip__"   alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-plants" src="__IMG_plants__" alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-fruit"  src="__IMG_fruit__"  alt="" aria-hidden="true" decoding="async">
+          <img class="master" src="__IMG_master__" alt="מערכת גידול מנותק מצע של תותלוי: תעלה תלויה, גרובג קוקוס, קו טפטוף ושתילי תות עם פירות" fetchpriority="high">
+        </div>
+        <a class="band b-fruit"  href="breeding.html"><span class="pill"><span class="n">05</span>פיתוח זנים</span></a>
+        <a class="band b-plants" href="seedlings.html"><span class="pill"><span class="n">04</span>שתילים</span></a>
+        <a class="band b-drip"   href="media.html#irrigation"><span class="pill"><span class="n">03</span>טפטוף ודישון</span></a>
+        <a class="band b-bag"    href="media.html"><span class="pill"><span class="n">02</span>מצעי גידול</span></a>
+        <a class="band b-gutter" href="gutters.html"><span class="pill"><span class="n">01</span>תעלות גידול</span></a>
+        <div class="cap cap-hint" id="hint">רחפו כדי לפרק את המערכת</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span class="chip">EC <b>1.8</b></span>
+    <span class="chip">pH <b>5.9</b></span>
+    <span class="chip">T-substrate <b>24.3°C</b></span>
+    <span class="chip">VWC <b>61%</b></span>
+    <span class="chip">Drain <b>18%</b></span>
+    <span class="chip">// live · NITUR</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">// ארבעת התחומים</div>
+        <h2>כל שכבה במערכת — תחום מומחיות שלם</h2>
+      </div>
+      <div class="idx">04</div>
+    </div>
+    <div class="cards">
+      <a class="card" href="gutters.html"><div class="n">01 / GUTTERS</div><h3>תעלות גידול</h3>
+        <p>מערכות תעלות מוגבהות לתות ולעגבנייה — פרופילים, תליות, ווים, שרשראות ופינות.</p><div class="go">לפרטים ←</div></a>
+      <a class="card" href="media.html"><div class="n">02 / MEDIA</div><h3>מצעי גידול</h3>
+        <p>גרובגים מבוססי קוקוס ופרלייט — איכות אחידה, בופר נכון, ניקוז מבוקר. כולל השקיה ודישון.</p><div class="go">לפרטים ←</div></a>
+      <a class="card" href="seedlings.html"><div class="n">03 / PLANTS</div><h3>שתילים</h3>
+        <p>שתילי תות וירקות מותאמים לגידול מנותק, עם מערכת שורשים שמוכנה לתעלה.</p><div class="go">לפרטים ←</div></a>
+      <a class="card" href="breeding.html"><div class="n">04 / BREEDING</div><h3>פיתוח זנים</h3>
+        <p>בחירה ופיתוח של זנים לביצועים גבוהים בגידול מנותק ובאקלים המקומי.</p><div class="go">לפרטים ←</div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section lead-sec" id="contact">
+  <div class="wrap lead-box">
+    <div>
+      <div class="eyebrow">// נתחיל פרויקט</div>
+      <h2>ספרו לנו על החלקה,<br>ונבנה לכם מערכת.</h2>
+      <p>אנחנו מגדלים בעצמנו — אנחנו יודעים מה עובד בשטח. השאירו פרטים ונחזור אליכם תוך יום עסקים, או דברו איתנו ישירות בוואטסאפ.</p>
+      <p style="font-family:var(--mono);font-size:.95rem;color:var(--charcoal)">054-6324746 · guy@tutaluy.com<br>רחוב הרימון 91, אחיטוב</p>
+    </div>
+    <div>
+      <form id="leadForm">
+        <input name="name" placeholder="שם מלא" required>
+        <div class="row2">
+          <input name="phone" placeholder="טלפון" required>
+          <select name="crop"><option value="">סוג גידול…</option><option>תות שדה</option><option>עגבנייה</option><option>מלפפון</option><option>פלפל</option><option>אחר</option></select>
+        </div>
+        <input name="size" placeholder="גודל פרויקט (דונם)">
+        <textarea name="msg" rows="3" placeholder="מה תרצו לגדל?"></textarea>
+        <button class="submit" type="submit">שלחו — נחזור אליכם</button>
+      </form>
+      <div class="ok" id="okMsg">תודה! נחזור אליכם תוך יום עסקים.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><div class="brand" style="color:#fff;font-size:1.3rem"><span class="t">tut</span>aluy</div>
+        <div style="margin-top:8px;max-width:28ch">פתרונות גידול מנותק מצע לחקלאות מקצועית.</div></div>
+      <div><div style="font-weight:700;color:#fff;margin-bottom:8px">מה אנחנו עושים</div>
+        <div><a href="gutters.html">תעלות גידול</a></div><div><a href="media.html">מצעי גידול</a></div>
+        <div><a href="seedlings.html">שתילים</a></div><div><a href="breeding.html">פיתוח זנים</a></div></div>
+      <div><div style="font-weight:700;color:#fff;margin-bottom:8px">צור קשר</div>
+        <div>054-6324746</div><div>guy@tutaluy.com</div><div>רחוב הרימון 91, אחיטוב</div></div>
+    </div>
+    <div class="muted">© TUTALUY LTD · תותלוי בע"מ</div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/972546324746" aria-label="וואטסאפ" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.13A11.86 11.86 0 010 11.93C0 5.35 5.37 0 11.96 0a11.9 11.9 0 018.42 3.49 11.8 11.8 0 013.49 8.42c0 6.58-5.37 11.93-11.96 11.93a12 12 0 01-5.73-1.46L.06 24zM6.6 20.2l.35.2a9.9 9.9 0 005.01 1.37c5.48 0 9.94-4.44 9.94-9.9a9.86 9.86 0 00-2.9-7A9.9 9.9 0 0011.96 2c-5.48 0-9.94 4.44-9.94 9.9 0 2.03.62 3.5 1.62 5.06l.23.37-1 3.63 3.73-.76zM17.5 14.3c-.07-.12-.26-.2-.55-.34-.29-.14-1.7-.84-1.97-.94-.26-.1-.46-.14-.65.14-.2.29-.74.94-.9 1.13-.17.2-.33.22-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.59.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.2.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.48-.65-.49l-.55-.01c-.2 0-.5.07-.76.36-.26.29-1 .97-1 2.37 0 1.4 1.02 2.75 1.17 2.94.14.2 2 3.05 4.85 4.28.68.29 1.2.47 1.62.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+</a>
+
+<script>
+document.getElementById('leadForm').addEventListener('submit', function (e) {
+  e.preventDefault(); this.style.display = 'none'; document.getElementById('okMsg').style.display = 'block';
+});
+
+(function () {
+  var stage = document.getElementById('stage'), hint = document.getElementById('hint');
+  var canHover = matchMedia('(hover: hover)').matches;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var inside = false;
+  var layers = Array.prototype.slice.call(stage.querySelectorAll('.layer'));
+  var ready = Promise.all(layers.map(function (im) {
+    return im.decode ? im.decode().catch(function () {}) : Promise.resolve();
+  }));
+
+  if (!canHover) hint.textContent = 'גללו — המערכת מתפרקת · הקישו על שכבה';
+  if (reduce) { ready.then(function () { stage.classList.add('x'); }); return; }
+
+  if (canHover) {
+    stage.addEventListener('pointerenter', function () { inside = true; ready.then(function () { if (inside) stage.classList.add('x'); }); });
+    stage.addEventListener('pointerleave', function () { inside = false; stage.classList.remove('x'); });
+    // one-time demo so visitors discover the interaction
+    ready.then(function () {
+      setTimeout(function () {
+        if (inside) return;
+        stage.classList.add('x');
+        setTimeout(function () { if (!inside) stage.classList.remove('x'); }, 2300);
+      }, 900);
+    });
+  } else {
+    ready.then(function () {
+      new IntersectionObserver(function (entries) {
+        stage.classList.toggle('x', entries[0].intersectionRatio > 0.55);
+      }, { threshold: [0, 0.55, 1] }).observe(stage);
+    });
+  }
+})();
+</script>
+</body>
+</html>
