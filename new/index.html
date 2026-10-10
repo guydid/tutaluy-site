@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TUTALUY — גידול מנותק מצע</title>
 <meta name="description" content="תותלוי — פתרונות גידול מנותק מצע לחקלאות מקצועית: תעלות גידול, מצעי קוקוס ופרלייט, השקיה ודישון, שתילים ופיתוח זנים.">
+<meta property="og:title" content="TUTALUY — גידול מנותק מצע">
+<meta property="og:description" content="מערכת אחת, חמש שכבות: תעלה, מצע, טפטוף, שתיל וזן.">
+<meta property="og:image" content="https://tutaluy.com/new/assets/hero/exploded.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -14,6 +17,7 @@
   --charcoal:#414042; --ink:#2b2a2c;
   --paper:#FAF8F5; --paper-2:#f2eee8;
   --leaf:#2E5E4E; --line:#D8D4CE;
+  --studio:#d8d5d2;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
@@ -38,9 +42,9 @@ nav.main a:hover{opacity:1;color:var(--coral-deep)}
 .cta-btn:hover{background:var(--coral-deep);transform:translateY(-1px)}
 @media(max-width:900px){nav.main{display:none}}
 
-.hero{padding:34px 0 8px}
-.hero .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:center}
-@media(max-width:900px){.hero .grid{grid-template-columns:1fr;gap:0}}
+.hero{padding:28px 0 36px}
+.hero .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:center}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr;gap:26px}}
 .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;color:var(--leaf);text-transform:uppercase;margin-bottom:14px}
 .hero h1{font-size:clamp(2.3rem,5.2vw,3.9rem);font-weight:900;color:var(--charcoal);letter-spacing:-.02em}
 .hero h1 .hl{color:var(--coral)}
@@ -49,26 +53,55 @@ nav.main a:hover{opacity:1;color:var(--coral-deep)}
 .btn-ghost{border:1.5px solid var(--line);padding:.6em 1.15em;border-radius:999px;font-weight:700;color:var(--charcoal);transition:border-color .2s,color .2s}
 .btn-ghost:hover{border-color:var(--coral);color:var(--coral-deep)}
 
-/* ---------- 3D stage ---------- */
-.stage3d{position:relative;width:100%;max-width:600px;margin:0 auto;aspect-ratio:1/1.02;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-#c{width:100%;height:100%;display:block;cursor:grab;outline:none}
-.lbl3d{position:absolute;left:0;top:0;transform:translate(-100%,-50%);display:flex;align-items:center;gap:.5em;
-  background:#fff;border:1px solid var(--line);border-radius:999px;padding:.34em .85em .34em .9em;
-  font:700 .92rem "Heebo",sans-serif;color:var(--charcoal);white-space:nowrap;opacity:0;pointer-events:none;
-  box-shadow:0 6px 16px rgba(65,64,66,.07);transition:background .2s,color .2s,border-color .2s;z-index:2}
-.lbl3d .n{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--coral);letter-spacing:.04em}
-.lbl3d::after{content:"";position:absolute;right:-30px;top:50%;width:28px;border-top:1.5px dashed #c6bfb4}
-.lbl3d.active{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
-.lbl3d.active .n{color:#ffb3b4}
-.hint{text-align:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:#9a958c;margin-top:2px;text-transform:uppercase}
-.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);
-  font-size:.75rem;letter-spacing:.14em;color:#a19b91;text-transform:uppercase;transition:opacity .4s}
-.ready .loading{opacity:0;pointer-events:none}
-.fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:10px;text-align:center}
-.nogl #c,.nogl .loading,.nogl .lbl3d{display:none}
-.nogl .fallback{display:flex}
-.fallback a{font-weight:700;color:var(--coral-deep)}
-@media(max-width:600px){ .lbl3d{font-size:.8rem;padding:.28em .7em} .lbl3d::after{width:16px;right:-18px} }
+/* ---------- photo exploded-view stage ---------- */
+.stage{position:relative;width:100%;max-width:min(560px,calc((100vh - 130px) * .79));margin:0 auto;
+  aspect-ratio:2528/3200;background:var(--studio);border-radius:28px;overflow:hidden;isolation:isolate;
+  user-select:none;-webkit-user-select:none}
+.frame{position:absolute;left:0;width:100%;top:23.5%;height:53.0%}
+.frame img{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;-webkit-user-drag:none}
+.master{z-index:6;
+  transition:opacity .45s ease .6s}
+.layer{opacity:0;transform-origin:50% 50%;will-change:transform;
+  transition:transform .95s cubic-bezier(.2,.75,.2,1) var(--d,0s),opacity .25s ease 1s,filter .25s ease}
+.l-fruit{--d:0s} .l-plants{--d:.04s} .l-drip{--d:.08s} .l-bag{--d:.12s} .l-gutter{--d:.16s}
+.stage.x .master{opacity:0;transition:opacity .3s ease}
+.stage.x .layer{opacity:1;transition:transform .95s cubic-bezier(.2,.75,.2,1) var(--d,0s),opacity .15s ease,filter .25s ease}
+.stage.x .l-gutter{transform:translate(4.5%,65.01%) scale(0.7)}
+.stage.x .l-bag{transform:translate(4.5%,21.34%) scale(0.7)}
+.stage.x .l-drip{transform:translate(4.5%,-5.54%) scale(0.7)}
+.stage.x .l-plants{transform:translate(4.5%,-30.87%) scale(0.7)}
+.stage.x .l-fruit{transform:translate(4.5%,-64.65%) scale(0.7)}
+/* focus one layer, dim the rest */
+.stage.x:has(.band:hover) .layer{opacity:.5}
+.stage.x:has(.b-gutter:hover) .l-gutter,.stage.x:has(.b-gutter:focus-visible) .l-gutter{opacity:1;filter:drop-shadow(0 16px 22px rgba(60,40,30,.22)) brightness(1.03)}
+.stage.x:has(.b-bag:hover) .l-bag,.stage.x:has(.b-bag:focus-visible) .l-bag{opacity:1;filter:drop-shadow(0 16px 22px rgba(60,40,30,.22)) brightness(1.03)}
+.stage.x:has(.b-drip:hover) .l-drip,.stage.x:has(.b-drip:focus-visible) .l-drip{opacity:1;filter:drop-shadow(0 16px 22px rgba(60,40,30,.22)) brightness(1.03)}
+.stage.x:has(.b-plants:hover) .l-plants,.stage.x:has(.b-plants:focus-visible) .l-plants{opacity:1;filter:drop-shadow(0 16px 22px rgba(60,40,30,.22)) brightness(1.03)}
+.stage.x:has(.b-fruit:hover) .l-fruit,.stage.x:has(.b-fruit:focus-visible) .l-fruit{opacity:1;filter:drop-shadow(0 16px 22px rgba(60,40,30,.22)) brightness(1.03)}
+
+.band{position:absolute;left:0;right:0;z-index:8;display:block;pointer-events:none;outline:none}
+.stage.x .band{pointer-events:auto;cursor:pointer}
+.b-gutter{top:73.09%;height:24.1%}
+.b-bag{top:57.42%;height:15.67%}
+.b-drip{top:42.8%;height:14.62%}
+.b-plants{top:25.29%;height:17.51%}
+.b-fruit{top:4.71%;height:20.58%}
+.pill{position:absolute;left:3%;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:.45em;
+  background:rgba(255,255,255,.92);border:1px solid rgba(65,64,66,.12);border-radius:999px;padding:.32em .8em .32em .85em;
+  font:700 .9rem "Heebo",sans-serif;color:var(--charcoal);white-space:nowrap;box-shadow:0 6px 16px rgba(65,64,66,.08);
+  opacity:0;transition:opacity .35s ease,background .2s,color .2s}
+.pill .n{font-family:var(--mono);font-size:.68rem;font-weight:600;color:var(--coral)}
+.pill::after{content:"";position:absolute;right:-24px;top:50%;width:20px;border-top:1.5px dashed rgba(65,64,66,.35)}
+.stage.x .pill{opacity:1;transition:opacity .4s ease .5s,background .2s,color .2s}
+.band:hover .pill,.band:focus-visible .pill{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+.band:hover .pill .n,.band:focus-visible .pill .n{color:#ffb3b4}
+.cap{position:absolute;left:0;right:0;text-align:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  color:#8f897f;text-transform:uppercase;transition:opacity .3s ease;z-index:7;pointer-events:none}
+.cap-top{top:3.2%;direction:ltr}
+.cap-hint{bottom:4.5%}
+.stage.x .cap{opacity:0}
+@media(max-width:600px){ .pill{left:2.5%;font-size:.7rem;padding:.24em .55em;gap:.35em} .pill .n{font-size:.6rem} .pill::after{width:8px;right:-11px} .stage{border-radius:22px} }
+@media(prefers-reduced-motion:reduce){ .stage *{transition:none!important} }
 
 /* ---------- rest of page ---------- */
 .strip{background:var(--charcoal);color:#efece7}
@@ -131,7 +164,7 @@ footer .muted{color:#8f8a82;font-size:.85rem;margin-top:18px}
     <div>
       <div class="eyebrow">// גידול מנותק מצע · Soilless systems</div>
       <h1>מגדלים מעל הקרקע,<br><span class="hl">בשליטה מלאה.</span></h1>
-      <p class="lead">מערכת אחת, חמש שכבות — תעלה, מצע, טפטוף, שתיל וזן. כל שכבה מהונדסת כדי לתת לצמח בדיוק את מה שהוא צריך. רחפו על המערכת כדי לפרק אותה, ולחצו על כל חלק.</p>
+      <p class="lead">מערכת אחת, חמש שכבות: תעלה, מצע, טפטוף, שתיל וזן. כל שכבה מהונדסת כדי לתת לצמח בדיוק את מה שהוא צריך. רחפו מעל המערכת כדי לפרק אותה, ולחצו על כל שכבה.</p>
       <div class="hero-cta">
         <a class="cta-btn" href="#contact">לתיאום ייעוץ</a>
         <a class="btn-ghost" href="gutters.html">לפרויקטים שלנו</a>
@@ -139,20 +172,23 @@ footer .muted{color:#8f8a82;font-size:.85rem;margin-top:18px}
     </div>
 
     <div>
-      <div class="stage3d" id="stage3d">
-        <canvas id="c" aria-label="מודל תלת-ממדי אינטראקטיבי של מערכת גידול מנותקת מצע"></canvas>
-        <a class="lbl3d" data-part="fruit"  href="breeding.html"><span class="n">05</span><span>פיתוח זנים</span></a>
-        <a class="lbl3d" data-part="plants" href="seedlings.html"><span class="n">04</span><span>שתילים</span></a>
-        <a class="lbl3d" data-part="drip"   href="media.html#irrigation"><span class="n">03</span><span>טפטוף ודישון</span></a>
-        <a class="lbl3d" data-part="bag"    href="media.html"><span class="n">02</span><span>מצעי גידול</span></a>
-        <a class="lbl3d" data-part="gutter" href="gutters.html"><span class="n">01</span><span>תעלות גידול</span></a>
-        <div class="loading">טוען מודל…</div>
-        <div class="fallback">
-          <div>התצוגה התלת-ממדית לא נתמכת בדפדפן הזה.</div>
-          <div><a href="gutters.html">תעלות</a> · <a href="media.html">מצעים</a> · <a href="seedlings.html">שתילים</a> · <a href="breeding.html">זנים</a></div>
+      <div class="stage" id="stage">
+        <div class="cap cap-top">tutaluy · soilless system · 5 layers</div>
+        <div class="frame">
+          <img class="layer l-gutter" src="assets/hero/gutter.webp" alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-bag"    src="assets/hero/bag.webp"    alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-drip"   src="assets/hero/drip.webp"   alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-plants" src="assets/hero/plants.webp" alt="" aria-hidden="true" decoding="async">
+          <img class="layer l-fruit"  src="assets/hero/fruit.webp"  alt="" aria-hidden="true" decoding="async">
+          <img class="master" src="assets/hero/master.webp" alt="מערכת גידול מנותק מצע של תותלוי: תעלה תלויה, גרובג קוקוס, קו טפטוף ושתילי תות עם פירות" fetchpriority="high">
         </div>
+        <a class="band b-fruit"  href="breeding.html"><span class="pill"><span class="n">05</span>פיתוח זנים</span></a>
+        <a class="band b-plants" href="seedlings.html"><span class="pill"><span class="n">04</span>שתילים</span></a>
+        <a class="band b-drip"   href="media.html#irrigation"><span class="pill"><span class="n">03</span>טפטוף ודישון</span></a>
+        <a class="band b-bag"    href="media.html"><span class="pill"><span class="n">02</span>מצעי גידול</span></a>
+        <a class="band b-gutter" href="gutters.html"><span class="pill"><span class="n">01</span>תעלות גידול</span></a>
+        <div class="cap cap-hint" id="hint">רחפו כדי לפרק את המערכת</div>
       </div>
-      <div class="hint">גררו לסיבוב · רחפו לפירוק · לחצו על חלק</div>
     </div>
   </div>
 </section>
@@ -179,7 +215,7 @@ footer .muted{color:#8f8a82;font-size:.85rem;margin-top:18px}
     </div>
     <div class="cards">
       <a class="card" href="gutters.html"><div class="n">01 / GUTTERS</div><h3>תעלות גידול</h3>
-        <p>מערכות תעלות מוגבהות לתות ולעגבנייה — פרופילים, סטנדים, ווים, שרשראות ופינות.</p><div class="go">לפרטים ←</div></a>
+        <p>מערכות תעלות מוגבהות לתות ולעגבנייה — פרופילים, תליות, ווים, שרשראות ופינות.</p><div class="go">לפרטים ←</div></a>
       <a class="card" href="media.html"><div class="n">02 / MEDIA</div><h3>מצעי גידול</h3>
         <p>גרובגים מבוססי קוקוס ופרלייט — איכות אחידה, בופר נכון, ניקוז מבוקר. כולל השקיה ודישון.</p><div class="go">לפרטים ←</div></a>
       <a class="card" href="seedlings.html"><div class="n">03 / PLANTS</div><h3>שתילים</h3>
@@ -230,347 +266,46 @@ footer .muted{color:#8f8a82;font-size:.85rem;margin-top:18px}
 </footer>
 
 <a class="wa" href="https://wa.me/972546324746" aria-label="וואטסאפ" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.13A11.86 11.86 0 010 11.93C0 5.35 5.37 0 11.96 0a11.9 11.9 0 018.42 3.49 11.8 11.8 0 013.49 8.42c0 6.58-5.37 11.93-11.96 11.93a12 12 0 01-5.73-1.46L.06 24zM6.6 20.2l.35.2a9.9 9.9 0 005.01 1.37c5.48 0 9.94-4.44 9.94-9.9a9.86 9.86 0 00-2.9-7A9.9 9.9 0 0011.96 2c-5.48 0-9.94 4.44-9.94 9.9 0 2.03.62 3.5 1.62 5.06l.23.37-1 3.63 3.73-.76zM17.5 14.3c-.07-.12-.26-.2-.55-.34-.29-.14-1.7-.84-1.970-.94-.26-.1-.46-.14-.65.14-.2.29-.74.94-.9 1.13-.17.2-.33.22-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.59.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.2.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.48-.65-.49l-.55-.01c-.2 0-.5.07-.76.36-.26.29-1 .97-1 2.37 0 1.4 1.02 2.75 1.17 2.94.14.2 2 3.05 4.85 4.28.68.29 1.2.47 1.62.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.13A11.86 11.86 0 010 11.93C0 5.35 5.37 0 11.96 0a11.9 11.9 0 018.42 3.49 11.8 11.8 0 013.49 8.42c0 6.58-5.37 11.93-11.96 11.93a12 12 0 01-5.73-1.46L.06 24zM6.6 20.2l.35.2a9.9 9.9 0 005.01 1.37c5.48 0 9.94-4.44 9.94-9.9a9.86 9.86 0 00-2.9-7A9.9 9.9 0 0011.96 2c-5.48 0-9.94 4.44-9.94 9.9 0 2.03.62 3.5 1.62 5.06l.23.37-1 3.63 3.73-.76zM17.5 14.3c-.07-.12-.26-.2-.55-.34-.29-.14-1.7-.84-1.97-.94-.26-.1-.46-.14-.65.14-.2.29-.74.94-.9 1.13-.17.2-.33.22-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.59.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.2.05-.36-.02-.5-.07-.15-.65-1.57-.9-2.15-.23-.56-.47-.48-.65-.49l-.55-.01c-.2 0-.5.07-.76.36-.26.29-1 .97-1 2.37 0 1.4 1.02 2.75 1.17 2.94.14.2 2 3.05 4.85 4.28.68.29 1.2.47 1.62.6.68.22 1.3.19 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
 </a>
 
 <script>
-document.getElementById('leadForm').addEventListener('submit',function(e){
-  e.preventDefault(); this.style.display='none'; document.getElementById('okMsg').style.display='block';
+document.getElementById('leadForm').addEventListener('submit', function (e) {
+  e.preventDefault(); this.style.display = 'none'; document.getElementById('okMsg').style.display = 'block';
 });
-</script>
 
-<!-- Three.js r160: inlined as a classic script in the self-contained preview build; the live build loads it from jsDelivr -->
-<!--__THREE_CLASSIC__-->
+(function () {
+  var stage = document.getElementById('stage'), hint = document.getElementById('hint');
+  var canHover = matchMedia('(hover: hover)').matches;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var inside = false;
+  var layers = Array.prototype.slice.call(stage.querySelectorAll('.layer'));
+  var ready = Promise.all(layers.map(function (im) {
+    return im.decode ? im.decode().catch(function () {}) : Promise.resolve();
+  }));
 
-<script type="module">
-const stage  = document.getElementById('stage3d');
-const canvas = document.getElementById('c');
-const fail = () => stage.classList.add('nogl');
+  if (!canHover) hint.textContent = 'גללו — המערכת מתפרקת · הקישו על שכבה';
+  if (reduce) { ready.then(function () { stage.classList.add('x'); }); return; }
 
-let THREE = window.THREE;
-if (!THREE) {
-  try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js'); }
-  catch (e) { console.error(e); fail(); }
-}
-
-if (THREE) init();
-
-function init(){
-  let renderer;
-  try { renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'}); }
-  catch (e) { console.error(e); fail(); return; }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
-
-  const scene  = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
-  const LOOK   = new THREE.Vector3(0, -0.95, 0);
-  camera.position.set(0, 2.6, 12.2);
-  camera.lookAt(LOOK);
-
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xd6cebf, 1.15));
-  const key = new THREE.DirectionalLight(0xffffff, 1.8);  key.position.set(4, 7, 6);   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffe2dc, 0.55); rim.position.set(-6, 3, -4); scene.add(rim);
-
-  const model = new THREE.Group();
-  model.position.x = 0.55;
-  scene.add(model);
-
-  /* ---------- helpers ---------- */
-  const M = (color, o = {}) => new THREE.MeshStandardMaterial(Object.assign({color, roughness:.7, metalness:0}, o));
-  const UP = new THREE.Vector3(0, 1, 0);
-  const mesh = (geo, mat, p = [0,0,0]) => { const m = new THREE.Mesh(geo, mat); m.position.set(p[0], p[1], p[2]); return m; };
-  function stick(a, b, r, mat, seg = 6){
-    const A = new THREE.Vector3(...a), B = new THREE.Vector3(...b);
-    const d = B.clone().sub(A), len = d.length();
-    const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, len, seg), mat);
-    m.position.copy(A).add(B).multiplyScalar(.5);
-    m.quaternion.setFromUnitVectors(UP, d.normalize());
-    return m;
+  if (canHover) {
+    stage.addEventListener('pointerenter', function () { inside = true; ready.then(function () { if (inside) stage.classList.add('x'); }); });
+    stage.addEventListener('pointerleave', function () { inside = false; stage.classList.remove('x'); });
+    // one-time demo so visitors discover the interaction
+    ready.then(function () {
+      setTimeout(function () {
+        if (inside) return;
+        stage.classList.add('x');
+        setTimeout(function () { if (!inside) stage.classList.remove('x'); }, 2300);
+      }, 900);
+    });
+  } else {
+    ready.then(function () {
+      new IntersectionObserver(function (entries) {
+        stage.classList.toggle('x', entries[0].intersectionRatio > 0.55);
+      }, { threshold: [0, 0.55, 1] }).observe(stage);
+    });
   }
-
-  const parts = {};
-  function makePart(name, page, base, exp, labelY){
-    const g = new THREE.Group(); g.position.y = base; model.add(g);
-    parts[name] = {name, group:g, base, exp, page, labelY, meshes:[], mats:new Set()};
-    return (m) => { m.traverse(o => { if (o.isMesh){ o.userData.part = name; parts[name].meshes.push(o); parts[name].mats.add(o.material); } }); g.add(m); return m; };
-  }
-
-  /* ---------- 01 · GUTTER ---------- */
-  {
-    const add = makePart('gutter', 'gutters.html', -1.15, -2.35, 0.0);
-    const L = 3.2;
-    const pvc   = M(0x606268, {roughness:.42, metalness:.05});
-    const capM  = M(0x4c4d52, {roughness:.5});
-    const lipM  = M(0xF5696B, {roughness:.4});
-    const steel = M(0x9a968f, {roughness:.35, metalness:.55});
-
-    add(mesh(new THREE.BoxGeometry(L, .08, 1.1), pvc, [0, -.3, 0]));
-    const wallG = new THREE.BoxGeometry(L, .66, .07);
-    const w1 = mesh(wallG, pvc, [0, 0, .665]);  w1.rotation.x =  .36; add(w1);
-    const w2 = mesh(wallG, pvc, [0, 0, -.665]); w2.rotation.x = -.36; add(w2);
-    const lipG = new THREE.BoxGeometry(L, .05, .15);
-    add(mesh(lipG, lipM, [0, .31,  .785]));
-    add(mesh(lipG, lipM, [0, .31, -.785]));
-
-    const cs = new THREE.Shape();
-    cs.moveTo(-.56, -.34); cs.lineTo(.56, -.34); cs.lineTo(.84, .33); cs.lineTo(-.84, .33); cs.lineTo(-.56, -.34);
-    const capG = new THREE.ExtrudeGeometry(cs, {depth:.06, bevelEnabled:false});
-    capG.rotateY(Math.PI / 2);
-    add(mesh(capG, capM, [ L/2,       0, 0]));
-    add(mesh(capG, capM, [-L/2 - .06, 0, 0]));
-
-    for (const x of [-1.25, 1.25]){
-      add(stick([x, -.34, 0], [x, -1.18, 0], .045, steel, 10));
-      add(mesh(new THREE.BoxGeometry(.36, .04, .36), capM, [x, -1.2, 0]));
-    }
-  }
-
-  /* ---------- 02 · GROW BAG (substrate) ---------- */
-  {
-    const add = makePart('bag', 'media.html', -1.18, -1.2, 0.0);
-    const film  = M(0xf3f1ec, {roughness:.55});
-    const coco  = M(0x7a5232, {roughness:1});
-    const coral = M(0xF5696B, {roughness:.45});
-    add(mesh(new THREE.BoxGeometry(2.75, .45, .92), film));
-    for (const x of [-.9, 0, .9]) add(mesh(new THREE.BoxGeometry(.42, .02, .42), coco, [x, .226, 0]));
-    add(mesh(new THREE.BoxGeometry(1.9, .06, .01), coral, [0, -.05, .461]));
-    add(mesh(new THREE.BoxGeometry(1.9, .025, .01), coral, [0, .04, .461]));
-  }
-
-  /* ---------- 03 · DRIP LINE ---------- */
-  {
-    const add = makePart('drip', 'media.html#irrigation', -.905, -.42, 0.0);
-    const pipe  = M(0x232325, {roughness:.32});
-    const stake = M(0xe0484c, {roughness:.4});
-    const water = M(0x86cde3, {roughness:.08, metalness:0, transparent:true, opacity:.9});
-    add(stick([-1.55, 0, -.3], [1.55, 0, -.3], .045, pipe, 14));
-    add(mesh(new THREE.SphereGeometry(.05, 12, 8), pipe, [-1.55, 0, -.3]));
-    for (const x of [-.9, 0, .9]){
-      add(stick([x, 0, -.3], [x + .06, .06, -.14], .012, pipe));
-      add(stick([x + .06, .06, -.14], [x + .1, -.02, .04], .012, pipe));
-      add(stick([x + .1, -.02, .04], [x + .1, -.16, .06], .022, stake));
-      add(mesh(new THREE.SphereGeometry(.03, 10, 8), water, [x + .1, -.2, .06]));
-    }
-  }
-
-  /* ---------- 04 · PLANTS (seedlings) ---------- */
-  {
-    const add = makePart('plants', 'seedlings.html', -.955, .26, .22);
-    const leafA = M(0x2f6e50, {roughness:.65, flatShading:true});
-    const leafB = M(0x3f8a62, {roughness:.65, flatShading:true});
-    const stem  = M(0x5f8a3e, {roughness:.7});
-    const crown = M(0x6b5a2f, {roughness:.9});
-    const root  = M(0xd8c6a3, {roughness:.9});
-    const leafGeo = new THREE.IcosahedronGeometry(.2, 1);
-
-    for (const px of [-.9, 0, .9]){
-      const g = new THREE.Group(); g.position.set(px, 0, 0);
-      [[-.2,-.42,.08],[.18,-.44,-.06],[.05,-.46,.16],[-.08,-.38,-.18],[.22,-.32,.12],[-.24,-.3,-.04]]
-        .forEach(d => g.add(stick([0, 0, 0], d, .012, root)));
-      g.add(mesh(new THREE.CylinderGeometry(.07, .085, .09, 8), crown, [0, .04, 0]));
-      const n = 6;
-      for (let i = 0; i < n; i++){
-        const a = i / n * Math.PI * 2 + px * 1.3 + .3;
-        const r = .3 + (i % 2) * .06, h = .34 + (i % 3) * .06;
-        g.add(stick([0, .08, 0], [Math.cos(a) * r * .5, h * .78, Math.sin(a) * r * .5], .014, stem));
-        const lf = mesh(leafGeo, i % 2 ? leafA : leafB, [Math.cos(a) * r, h, Math.sin(a) * r]);
-        lf.scale.set(1.25, .24, .85);
-        lf.rotation.order = 'YXZ'; lf.rotation.y = -a; lf.rotation.z = .42;
-        g.add(lf);
-      }
-      add(g);
-    }
-  }
-
-  /* ---------- 05 · FRUIT & FLOWERS (variety) ---------- */
-  {
-    const add = makePart('fruit', 'breeding.html', -1.0, 1.5, .1);
-    // seeded strawberry texture
-    const cv = document.createElement('canvas'); cv.width = cv.height = 128;
-    const cx = cv.getContext('2d');
-    cx.fillStyle = '#e2404a'; cx.fillRect(0, 0, 128, 128);
-    cx.fillStyle = '#f7d774';
-    for (let y = 0; y < 8; y++) for (let x = 0; x < 8; x++){
-      cx.beginPath(); cx.ellipse(x * 16 + (y % 2 ? 8 : 0) + 4, y * 16 + 6, 1.8, 2.6, 0, 0, Math.PI * 2); cx.fill();
-    }
-    const tex = new THREE.CanvasTexture(cv);
-    tex.colorSpace = THREE.SRGBColorSpace; tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(3, 2);
-    const berryM = M(0xffffff, {map:tex, roughness:.32});
-    const calyx  = M(0x3f8a62, {roughness:.6, flatShading:true});
-    const stem   = M(0x5f8a3e, {roughness:.7});
-    const petal  = M(0xffffff, {roughness:.5});
-    const pollen = M(0xf2c14e, {roughness:.6});
-
-    const prof = [[0,-.2],[.07,-.17],[.12,-.1],[.145,-.02],[.14,.05],[.11,.1],[.06,.125],[0,.13]].map(p => new THREE.Vector2(p[0], p[1]));
-    const berryGeo = new THREE.LatheGeometry(prof, 18);
-    const sepalGeo = new THREE.IcosahedronGeometry(.05, 0);
-    const petalGeo = new THREE.SphereGeometry(.065, 10, 6);
-
-    function berry(x, y, z, s){
-      const g = new THREE.Group(); g.position.set(x, y, z); g.scale.setScalar(s); g.rotation.z = (x > 0 ? -.12 : .12);
-      g.add(mesh(berryGeo, berryM));
-      for (let i = 0; i < 6; i++){
-        const a = i / 6 * Math.PI * 2;
-        const c = mesh(sepalGeo, calyx, [Math.cos(a) * .075, .13, Math.sin(a) * .075]);
-        c.scale.set(1.6, .3, .7); c.rotation.order = 'YXZ'; c.rotation.y = -a; c.rotation.z = -.35;
-        g.add(c);
-      }
-      add(g);
-      add(stick([x, y + .13 * s, z], [x * .85, y + .55, z - .38], .012, stem));
-    }
-    function flower(x, y, z){
-      const g = new THREE.Group(); g.position.set(x, y, z); g.rotation.x = .9;
-      for (let i = 0; i < 5; i++){
-        const a = i / 5 * Math.PI * 2;
-        const p = mesh(petalGeo, petal, [Math.cos(a) * .075, 0, Math.sin(a) * .075]);
-        p.scale.set(1, .22, .85); p.rotation.y = -a; g.add(p);
-      }
-      g.add(mesh(new THREE.SphereGeometry(.04, 10, 8), pollen, [0, .015, 0]));
-      add(g);
-      add(stick([x, y - .03, z - .02], [x * .9, y - .32, z - .3], .01, stem));
-    }
-    berry(-.78, .0,  .52, 1.0);
-    berry( .14, .05, .56, 1.12);
-    berry( .98, -.02, .5, .95);
-    flower(-.22, .5, .32);
-    flower( .66, .56, .24);
-  }
-
-  /* ---------- soft contact shadow ---------- */
-  const sc = document.createElement('canvas'); sc.width = sc.height = 128;
-  const sx = sc.getContext('2d');
-  const gr = sx.createRadialGradient(64, 64, 4, 64, 64, 64);
-  gr.addColorStop(0, 'rgba(40,36,30,.30)'); gr.addColorStop(1, 'rgba(40,36,30,0)');
-  sx.fillStyle = gr; sx.fillRect(0, 0, 128, 128);
-  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(4.8, 2.4),
-    new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(sc), transparent:true, depthWrite:false}));
-  shadow.rotation.x = -Math.PI / 2;
-  model.add(shadow);
-
-  /* ---------- labels ---------- */
-  const labels = {};
-  stage.querySelectorAll('.lbl3d').forEach(el => {
-    labels[el.dataset.part] = el;
-    el.addEventListener('pointerenter', () => setHover(el.dataset.part));
-    el.addEventListener('pointerleave', () => setHover(null));
-  });
-  const LABEL_X = -1.65;
-  const v = new THREE.Vector3();
-
-  /* ---------- interaction ---------- */
-  const reduce  = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouch = matchMedia('(hover: none)').matches;
-  let targetT = isTouch ? 1 : 0, t = targetT;
-  let hovering = false, dragging = false, moved = 0, lastX = 0, lastY = 0;
-  let rotOff = 0, tiltOff = 0, wobAmp = reduce ? 0 : .3;
-  let hovered = null;
-
-  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
-  const pickables = [];
-  for (const k in parts) pickables.push(...parts[k].meshes);
-
-  function setHover(name){
-    if (name === hovered) return;
-    if (hovered) { parts[hovered].mats.forEach(m => m.emissive.setHex(0x000000)); labels[hovered]?.classList.remove('active'); }
-    hovered = name;
-    if (hovered) { parts[hovered].mats.forEach(m => m.emissive.setHex(0x4a1c1c)); labels[hovered]?.classList.add('active'); }
-    canvas.style.cursor = dragging ? 'grabbing' : (hovered ? 'pointer' : 'grab');
-  }
-  function pick(e){
-    const r = canvas.getBoundingClientRect();
-    ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-    ray.setFromCamera(ndc, camera);
-    const hit = ray.intersectObjects(pickables, false)[0];
-    setHover(hit ? hit.object.userData.part : null);
-  }
-
-  stage.addEventListener('pointerenter', () => { hovering = true; targetT = 1; });
-  stage.addEventListener('pointerleave', () => { hovering = false; dragging = false; if (!isTouch) targetT = 0; setHover(null); });
-  canvas.addEventListener('pointerleave', () => { if (!dragging) setHover(null); });
-  canvas.addEventListener('pointerdown', e => {
-    dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY;
-    canvas.setPointerCapture(e.pointerId); canvas.style.cursor = 'grabbing';
-  });
-  canvas.addEventListener('pointermove', e => {
-    if (dragging){
-      const dx = e.clientX - lastX, dy = e.clientY - lastY;
-      lastX = e.clientX; lastY = e.clientY; moved += Math.abs(dx) + Math.abs(dy);
-      rotOff += dx * .009;
-      tiltOff = Math.max(-.22, Math.min(.3, tiltOff + dy * .004));
-    } else pick(e);
-  });
-  canvas.addEventListener('pointerup', e => {
-    dragging = false;
-    if (moved < 6){ pick(e); if (hovered) location.href = parts[hovered].page; }
-    canvas.style.cursor = hovered ? 'pointer' : 'grab';
-  });
-
-  if (isTouch) document.querySelector('.hint').textContent = 'גררו לסיבוב · הקישו על חלק';
-  if (!isTouch && !reduce){
-    setTimeout(() => { if (!hovering){ targetT = 1;
-      setTimeout(() => { if (!hovering) targetT = 0; }, 1900); } }, 900);
-  }
-
-  /* ---------- sizing & visibility ---------- */
-  function resize(){
-    const w = stage.clientWidth, h = stage.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.fov = w < 420 ? 34 : 30;
-    camera.updateProjectionMatrix();
-  }
-  new ResizeObserver(resize).observe(stage); resize();
-
-  let running = true, raf = 0;
-  new IntersectionObserver(([en]) => {
-    running = en.isIntersecting;
-    if (running && !raf) { clock.getDelta(); raf = requestAnimationFrame(tick); }
-  }).observe(stage);
-
-  /* ---------- loop ---------- */
-  const clock = new THREE.Clock();
-  const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-
-  function tick(){
-    if (!running){ raf = 0; return; }
-    const dt = Math.min(clock.getDelta(), .05), time = clock.elapsedTime;
-    t += (targetT - t) * Math.min(1, dt * 3.6);
-    const e = ease(Math.max(0, Math.min(1, t)));
-
-    for (const k in parts){ const p = parts[k]; p.group.position.y = p.base + (p.exp - p.base) * e; }
-    shadow.position.y = parts.gutter.group.position.y - 1.23;
-
-    const wobTarget = (dragging || hovered || reduce) ? 0 : .3;
-    wobAmp += (wobTarget - wobAmp) * Math.min(1, dt * 2);
-    model.rotation.y = -.55 + rotOff + Math.sin(time * .38) * wobAmp;
-    model.rotation.x = .05 + tiltOff;
-
-    const dist = 8.7 + (12.9 - 8.7) * e, lookY = -1.42 + (-.72 + 1.42) * e;
-    camera.position.set(0, lookY + 3.3 * dist / 12.2, dist);
-    LOOK.set(0, lookY, 0); camera.lookAt(LOOK);
-
-    renderer.render(scene, camera);
-
-    const W = canvas.clientWidth, H = canvas.clientHeight;
-    const o = Math.max(0, Math.min(1, (e - .35) / .5));
-    for (const k in labels){
-      const el = labels[k], p = parts[k];
-      v.set(LABEL_X + model.position.x - .55, p.group.position.y + p.labelY, 0).project(camera);
-      let x = (v.x * .5 + .5) * W, y = (-v.y * .5 + .5) * H;
-      const lw = el.offsetWidth;
-      if (x - lw < 4) x = lw + 4;
-      el.style.left = x + 'px'; el.style.top = y + 'px';
-      el.style.opacity = o;
-      el.style.pointerEvents = o > .25 ? 'auto' : 'none';
-    }
-    raf = requestAnimationFrame(tick);
-  }
-
-  stage.classList.add('ready');
-  raf = requestAnimationFrame(tick);
-}
+})();
 </script>
 </body>
 </html>
