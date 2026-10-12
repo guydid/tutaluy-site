@@ -1,0 +1,200 @@
+/* tutaluy, direction "greenhouse at night": dark, photographic, one scrubbed explode on the home page.
+   Shape rule: controls are pills, photographs and product panels are square-cornered. */
+:root{
+  --bg:#121413; --surface:#1B1E1C; --ink:#EDEEEA; --ink-2:#A3A8A2; --line:rgba(237,238,234,.14);
+  --studio:#d8d5d2; --coral:#F5696B; --coral-press:#FF8486;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --display:"Karantina",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;color-scheme:dark}
+body{margin:0;font-family:"Rubik",system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--bg);
+  -webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:rgba(245,105,107,.35)}
+h1,h2,h3{margin:0;font-weight:700;text-wrap:balance}
+h1,h2{font-family:var(--display);line-height:.9;letter-spacing:0}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+a,button{touch-action:manipulation}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.5em;border-radius:999px;border:0;cursor:pointer;
+  font:inherit;font-weight:500;background:var(--coral);color:var(--bg);white-space:nowrap;user-select:none;-webkit-user-select:none;
+  transition:transform 160ms var(--ease-out),background-color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(237,238,234,.45)}
+@media(hover:hover) and (pointer:fine){.btn:hover{background:var(--coral-press)}.btn.ghost:hover{background:rgba(237,238,234,.08)}}
+
+/* ---------- header (over the photo on every page) ---------- */
+header{position:absolute;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px)}
+header .bar{display:flex;align-items:center;gap:28px;height:72px}
+.brand{font-weight:600;font-size:1.4rem;letter-spacing:-.02em;direction:ltr}
+.brand .t{color:var(--coral)}
+header nav{display:flex;gap:26px;margin-inline-start:auto;color:rgba(237,238,234,.8)}
+header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral)}
+@media(hover:hover) and (pointer:fine){header nav a:hover{color:#fff}}
+@media(max-width:900px){
+  header .bar{flex-wrap:wrap;height:auto;padding-top:12px;gap:10px 16px}
+  header .btn{margin-inline-start:auto;min-height:40px;padding:0 1.1em}
+  header nav{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;padding-bottom:8px;font-size:.95rem;scrollbar-width:none}
+  header nav::-webkit-scrollbar{display:none}
+  header nav a{white-space:nowrap}
+}
+
+/* ---------- photo heroes ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end}
+.hero.page{min-height:min(68svh,640px)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to top,rgba(18,20,19,.96) 0%,rgba(18,20,19,.55) 40%,rgba(18,20,19,.2) 70%,rgba(18,20,19,.6) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(36px,7vh,80px)}
+.hero h1{font-size:clamp(5rem,15vw,12.5rem);line-height:.82}
+.hero.page h1{font-size:clamp(3.8rem,10vw,8rem)}
+.hero .sub{max-width:36ch;font-size:1.15rem;color:rgba(237,238,234,.86);margin-top:16px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(64px,9vw,112px) 0}
+.sec h2{font-size:clamp(2.6rem,5.6vw,4.4rem)}
+.sec .lede{color:var(--ink-2);margin-top:12px;max-width:44ch}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+
+/* product panels: the studio light-box from the hero, reused for every product shot */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px;margin-top:32px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:600px){.grid,.grid.two{grid-template-columns:1fr 1fr;gap:20px 12px}.prod h3{font-size:1rem}.prod p{font-size:.88rem}}
+.prod{display:flex;flex-direction:column;gap:12px}
+.prod .ph{position:relative;background:var(--studio);aspect-ratio:4/3}
+.prod .ph img{position:absolute;inset:7%;width:86%;height:86%;object-fit:contain;mix-blend-mode:multiply}
+.prod h3{font-size:1.15rem;font-weight:600}
+.prod p{color:var(--ink-2);font-size:.95rem;margin-top:-6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chips span{font-size:.85rem;padding:.2em .7em;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);font-variant-numeric:tabular-nums}
+
+.photo{margin:0;overflow:hidden;background:var(--surface)}
+.photo img{width:100%;height:100%;object-fit:cover}
+
+/* steps: an ordered path where the order is the point */
+.path{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border-top:1px solid var(--line)}
+.path li{position:relative;padding:22px 18px 0 0;border-inline-start:1px solid var(--line)}
+.path li:first-child{border-inline-start:0}
+.path li::before{content:"";position:absolute;top:-5px;inset-inline-start:-5px;width:9px;height:9px;border-radius:50%;background:var(--coral)}
+.path li:first-child::before{inset-inline-start:0}
+.path h3{font-size:1.1rem;font-weight:600}
+.path p{color:var(--ink-2);font-size:.93rem;margin-top:6px;padding-inline-end:12px}
+@media(max-width:700px){
+  .path{grid-template-columns:1fr;border-top:0;border-inline-start:1px solid var(--line);gap:22px}
+  .path li{border-inline-start:0;padding:0 22px 0 0}
+  .path li::before,.path li:first-child::before{top:7px;inset-inline-start:-5px}
+}
+.points{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.points li{padding-inline-start:20px;position:relative;color:var(--ink-2)}
+.points li b{color:var(--ink);font-weight:600}
+.points li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:10px;height:2px;background:var(--coral)}
+
+/* call-to-action band at the foot of inner pages */
+.cta{border-top:1px solid var(--line);padding:clamp(56px,8vw,96px) 0}
+.cta .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cta h2{font-size:clamp(2.6rem,6vw,4.6rem)}
+.cta .acts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tel{font-size:1.25rem;font-weight:500;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--line)}
+
+/* ---------- home: anatomy (pinned scene, explode scrubbed by scroll) ---------- */
+.anatomy{position:relative;height:250vh}
+.pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(24px,5vw,72px)}
+.pin h2{font-size:clamp(3rem,6.5vw,5.4rem)}
+.pin p{color:var(--ink-2);margin-top:16px;max-width:30ch}
+.lightbox{justify-self:center;width:100%;max-width:min(560px,calc((100svh - 80px) * .79));
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06)}
+@media(max-width:860px){
+  .anatomy{height:220vh}
+  .pin{grid-template-columns:1fr;align-content:center;gap:18px}
+  .pin h2{font-size:clamp(2.6rem,11vw,3.6rem)}
+  .pin p{display:none}
+  .lightbox{max-width:min(420px,calc((100svh - 190px) * .79))}
+}
+
+/* ---------- exploded-view stage ---------- */
+.stage{position:relative;width:100%;aspect-ratio:2528/3200;background:var(--studio);overflow:hidden;isolation:isolate;user-select:none;-webkit-user-select:none}
+.frame{position:absolute;left:0;width:100%;top:23.5%;height:53%}
+.frame img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-user-drag:none}
+.master{z-index:6;transition:opacity .3s ease .42s}
+.layer{opacity:0;transform-origin:50% 50%;transition:transform .55s cubic-bezier(.77,0,.175,1),opacity .2s ease .5s,filter .25s ease}
+.l-fruit{--d:0s} .l-plants{--d:.04s} .l-drip{--d:.08s} .l-bag{--d:.12s} .l-gutter{--d:.16s}
+.stage.x .master{opacity:0;transition:opacity .25s ease}
+.stage.x .layer{opacity:1;will-change:transform;transition:transform .9s cubic-bezier(.16,1,.3,1) var(--d,0s),opacity .12s ease,filter .25s ease}
+.stage.x[data-focus] .layer{opacity:.4}
+.band{position:absolute;left:0;right:0;z-index:8;display:block;pointer-events:none}
+.stage.x .band{pointer-events:auto;cursor:pointer}
+.stage.x .l-gutter{transform:translate(4.5%,65.01%) scale(.7)}
+.stage.x .l-bag{transform:translate(4.5%,21.34%) scale(.7)}
+.stage.x .l-drip{transform:translate(4.5%,-5.54%) scale(.7)}
+.stage.x .l-plants{transform:translate(4.5%,-30.87%) scale(.7)}
+.stage.x .l-fruit{transform:translate(4.5%,-64.65%) scale(.7)}
+.stage.x[data-focus=gutter] .l-gutter,.stage.x[data-focus=bag] .l-bag,.stage.x[data-focus=drip] .l-drip,
+.stage.x[data-focus=plants] .l-plants,.stage.x[data-focus=fruit] .l-fruit{opacity:1;filter:drop-shadow(0 16px 22px rgba(30,25,20,.25)) brightness(1.03)}
+.b-gutter{top:73.09%;height:24.1%}
+.b-bag{top:57.42%;height:15.67%}
+.b-drip{top:42.8%;height:14.62%}
+.b-plants{top:25.29%;height:17.51%}
+.b-fruit{top:4.71%;height:20.58%}
+.callout{position:absolute;left:3%;top:50%;transform:translateY(-50%);z-index:9;display:flex;align-items:center;
+  background:rgba(18,20,19,.9);color:var(--ink);border-radius:999px;padding:.3em .8em;font-size:.88rem;font-weight:500;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .3s ease,background-color .2s ease}
+.callout::after{content:"";position:absolute;right:-20px;top:50%;width:16px;border-top:1px solid rgba(18,20,19,.55)}
+.stage.x .callout{opacity:1;pointer-events:auto;transition:opacity .35s ease .45s,background-color .2s ease}
+.stage.scrub .callout{pointer-events:auto}
+.stage.scrub .band{pointer-events:none}
+@media(hover:hover) and (pointer:fine){.callout:hover{background:var(--coral);color:var(--bg)}}
+@media(max-width:600px){.callout{font-size:.7rem;padding:.25em .55em}.callout::after{width:8px;right:-10px}}
+@media(prefers-reduced-motion:reduce){.stage *{transition:none!important;animation:none!important}}
+@supports (animation-timeline: view()){
+  .anatomy{view-timeline-name:--anat;view-timeline-axis:block}
+  .stage.scrub .layer,.stage.scrub .master,.stage.scrub .callout{transition:none;animation-duration:auto;animation-timing-function:linear;
+    animation-fill-mode:both;animation-timeline:--anat}
+  .stage.scrub .layer{opacity:1;animation-range:contain 4% contain 52%}
+  .stage.scrub .master{opacity:1;animation-name:fade-out;animation-range:contain 5% contain 15%}
+  .stage.scrub .callout{opacity:0;animation-name:fade-in;animation-range:contain 42% contain 56%}
+  .stage.scrub .l-gutter{animation-name:ex-gutter}
+  .stage.scrub .l-bag{animation-name:ex-bag}
+  .stage.scrub .l-drip{animation-name:ex-drip}
+  .stage.scrub .l-plants{animation-name:ex-plants}
+  .stage.scrub .l-fruit{animation-name:ex-fruit}
+  @keyframes fade-out{to{opacity:0}}
+  @keyframes fade-in{to{opacity:1}}
+  @keyframes ex-gutter{from{transform:none}to{transform:translate(4.5%,65.01%) scale(.7)}}
+  @keyframes ex-bag{from{transform:none}to{transform:translate(4.5%,21.34%) scale(.7)}}
+  @keyframes ex-drip{from{transform:none}to{transform:translate(4.5%,-5.54%) scale(.7)}}
+  @keyframes ex-plants{from{transform:none}to{transform:translate(4.5%,-30.87%) scale(.7)}}
+  @keyframes ex-fruit{from{transform:none}to{transform:translate(4.5%,-64.65%) scale(.7)}}
+}
+
+/* ---------- home: domains reel ---------- */
+.reel{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;margin-top:36px;overflow-x:auto;
+  scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:rgba(237,238,234,.25) transparent}
+.reel a{position:relative;scroll-snap-align:start;display:block;overflow:hidden;background:var(--surface)}
+.reel img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .6s var(--ease-out)}
+.reel a::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,20,19,.9),rgba(18,20,19,0) 55%)}
+.reel .cap{position:absolute;z-index:1;inset:auto 18px 18px 18px}
+.reel h3{font-family:var(--display);font-size:2.4rem;line-height:.95}
+@media(hover:hover) and (pointer:fine){.reel a:hover img{transform:scale(1.04)}}
+@media(max-width:700px){.reel{grid-auto-columns:78%}}
+
+/* ---------- home: contact form ---------- */
+.contact .split{align-items:start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:grid;gap:6px}
+label{font-size:.9rem;color:var(--ink-2)}
+input,select{font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.75em .9em;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--coral)}
+form .btn{grid-column:1/-1}
+.sent{display:none;grid-column:1/-1;color:var(--ink-2)}
+.sent.on{display:block}
+@media(max-width:600px){form{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));color:var(--ink-2);font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px 28px;flex-wrap:wrap}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+@media(hover:hover) and (pointer:fine){footer a:hover{color:var(--ink)}}
