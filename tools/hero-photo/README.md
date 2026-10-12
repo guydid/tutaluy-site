@@ -18,8 +18,8 @@ Pipeline (run from the repo root, renders in $SRC):
    (#d8d5d2), so no frame edge shows; also writes `exploded.webp/.jpg` (og:image).
 4. `python3 tools/hero-photo/geometry.py $CUT .` computes the exploded transforms,
    hit bands and label positions -> `geometry.json`.
-5. `python3 tools/hero-photo/build.py` renders `new/index.html` from `template.html`;
-   `--preview` writes a single-file preview with the images inlined.
+5. The /new pages are static HTML. If the geometry changes, copy the transforms and bands from
+   `geometry.json` into the "exploded-view stage" block of `new/assets/site.css`.
 
 The earlier procedural Three.js hero is in git history (commit 3ee5707).
 `tools/` is excluded from the server deploy.
