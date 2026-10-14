@@ -27,17 +27,20 @@ img{display:block;max-width:100%;height:auto}
 @media(hover:hover) and (pointer:fine){.btn:hover{background:var(--coral-press)}.btn.ghost:hover{background:rgba(237,238,234,.08)}}
 
 /* ---------- header (over the photo on every page) ---------- */
-header{position:absolute;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px)}
+header{position:absolute;inset:0 0 auto;z-index:20;padding:env(safe-area-inset-top,0px) 0 28px;
+  background:linear-gradient(to bottom,rgba(18,20,19,.88),rgba(18,20,19,.55) 60%,rgba(18,20,19,0))}
 header .bar{display:flex;align-items:center;gap:28px;height:72px}
 .brand{font-weight:600;font-size:1.4rem;letter-spacing:-.02em;direction:ltr}
 .brand .t{color:var(--coral)}
-header nav{display:flex;gap:26px;margin-inline-start:auto;color:rgba(237,238,234,.8)}
+header nav{display:flex;gap:26px;margin-inline-start:auto;color:var(--ink)}
+header nav a,footer nav a{display:inline-flex;align-items:center;min-height:44px}
 header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral)}
 @media(hover:hover) and (pointer:fine){header nav a:hover{color:#fff}}
 @media(max-width:900px){
   header .bar{flex-wrap:wrap;height:auto;padding-top:12px;gap:10px 16px}
-  header .btn{margin-inline-start:auto;min-height:40px;padding:0 1.1em}
-  header nav{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;padding-bottom:8px;font-size:.95rem;scrollbar-width:none}
+  header .btn{margin-inline-start:auto;min-height:44px;padding:0 1.1em}
+  header nav{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;font-size:.95rem;scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(to left,transparent,#000 28px);mask-image:linear-gradient(to left,transparent,#000 28px)}
   header nav::-webkit-scrollbar{display:none}
   header nav a{white-space:nowrap}
 }
@@ -48,11 +51,15 @@ header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral
 .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
 .hero::after{content:"";position:absolute;inset:0;background:
   linear-gradient(to top,rgba(18,20,19,.96) 0%,rgba(18,20,19,.55) 40%,rgba(18,20,19,.2) 70%,rgba(18,20,19,.6) 100%)}
-.hero .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(36px,7vh,80px)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:150px;padding-bottom:clamp(36px,7vh,80px)}
 .hero h1{font-size:clamp(5rem,15vw,12.5rem);line-height:.82}
 .hero.page h1{font-size:clamp(3.8rem,10vw,8rem)}
 .hero .sub{max-width:36ch;font-size:1.15rem;color:rgba(237,238,234,.86);margin-top:16px}
 .hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .obj{position:absolute;z-index:1;inset-inline-end:clamp(20px,4vw,48px);bottom:clamp(36px,7vh,80px);width:min(40vw,520px);aspect-ratio:4/3;
+  background:var(--studio);display:grid;place-items:center;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.hero .obj img{width:84%;height:78%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(30,25,20,.25))}
+@media(max-width:860px){.hero .obj{display:none}}
 
 /* ---------- sections ---------- */
 .sec{padding:clamp(64px,9vw,112px) 0}
@@ -67,7 +74,7 @@ header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral
 @media(max-width:600px){.grid,.grid.two{grid-template-columns:1fr 1fr;gap:20px 12px}.prod h3{font-size:1rem}.prod p{font-size:.88rem}}
 .prod{display:flex;flex-direction:column;gap:12px}
 .prod .ph{position:relative;background:var(--studio);aspect-ratio:4/3}
-.prod .ph img{position:absolute;inset:7%;width:86%;height:86%;object-fit:contain;mix-blend-mode:multiply}
+.prod .ph img{position:absolute;inset:9%;width:82%;height:82%;object-fit:contain;filter:drop-shadow(0 14px 16px rgba(30,25,20,.22))}
 .prod h3{font-size:1.15rem;font-weight:600}
 .prod p{color:var(--ink-2);font-size:.95rem;margin-top:-6px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
@@ -99,20 +106,20 @@ header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral
 .cta .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .cta h2{font-size:clamp(2.6rem,6vw,4.6rem)}
 .cta .acts{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.tel{font-size:1.25rem;font-weight:500;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--line)}
+.tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.25rem;font-weight:500;font-variant-numeric:tabular-nums;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.3em}
 
 /* ---------- home: anatomy (pinned scene, explode scrubbed by scroll) ---------- */
-.anatomy{position:relative;height:250vh}
+.anatomy{position:relative;height:200vh}
 .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(24px,5vw,72px)}
 .pin h2{font-size:clamp(3rem,6.5vw,5.4rem)}
 .pin p{color:var(--ink-2);margin-top:16px;max-width:30ch}
 .lightbox{justify-self:center;width:100%;max-width:min(560px,calc((100svh - 80px) * .79));
   box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06)}
 @media(max-width:860px){
-  .anatomy{height:220vh}
+  .anatomy{height:180vh}
   .pin{grid-template-columns:1fr;align-content:center;gap:18px}
   .pin h2{font-size:clamp(2.6rem,11vw,3.6rem)}
-  .pin p{display:none}
+  .pin p{margin-top:8px;font-size:.95rem}
   .lightbox{max-width:min(420px,calc((100svh - 190px) * .79))}
 }
 
@@ -146,24 +153,27 @@ header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral
 .callout::after{content:"";position:absolute;right:-20px;top:50%;width:16px;border-top:1px solid rgba(18,20,19,.55)}
 .stage.x .callout{opacity:1;pointer-events:auto;transition:opacity .35s ease .45s,background-color .2s ease}
 .stage.scrub .callout{pointer-events:auto}
-.stage.scrub .band{pointer-events:none}
 @media(hover:hover) and (pointer:fine){.callout:hover{background:var(--coral);color:var(--bg)}}
-@media(max-width:600px){.callout{font-size:.7rem;padding:.25em .55em}.callout::after{width:8px;right:-10px}}
-@media(prefers-reduced-motion:reduce){.stage *{transition:none!important;animation:none!important}}
+@media(max-width:600px){.callout{font-size:.8rem;padding:.5em .75em}.callout::after{width:8px;right:-10px}}
+@media(prefers-reduced-motion:reduce){.stage *{transition:none!important;animation:none!important}.anatomy{height:auto}.pin{position:static;height:auto;padding-block:64px}}
 @supports (animation-timeline: view()){
   .anatomy{view-timeline-name:--anat;view-timeline-axis:block}
   .stage.scrub .layer,.stage.scrub .master,.stage.scrub .callout{transition:none;animation-duration:auto;animation-timing-function:linear;
     animation-fill-mode:both;animation-timeline:--anat}
-  .stage.scrub .layer{opacity:1;animation-range:contain 4% contain 52%}
-  .stage.scrub .master{opacity:1;animation-name:fade-out;animation-range:contain 5% contain 15%}
-  .stage.scrub .callout{opacity:0;animation-name:fade-in;animation-range:contain 42% contain 56%}
+  .stage.scrub .layer{opacity:1;animation-range:contain 6% contain 68%}
+  .stage.scrub .master{opacity:1;animation-name:fade-out;animation-range:contain 4% contain 6%}
+  .stage.scrub .callout{opacity:0;visibility:hidden;animation-name:fade-in;animation-range:contain 58% contain 72%}
+  .stage.scrub .band{pointer-events:auto}
+  .stage.scrub:focus-within :is(.layer,.master,.callout){animation:none}
+  .stage.scrub:focus-within .master{opacity:0}
+  .stage.scrub:focus-within .callout{opacity:1;visibility:visible}
   .stage.scrub .l-gutter{animation-name:ex-gutter}
   .stage.scrub .l-bag{animation-name:ex-bag}
   .stage.scrub .l-drip{animation-name:ex-drip}
   .stage.scrub .l-plants{animation-name:ex-plants}
   .stage.scrub .l-fruit{animation-name:ex-fruit}
   @keyframes fade-out{to{opacity:0}}
-  @keyframes fade-in{to{opacity:1}}
+  @keyframes fade-in{from{visibility:hidden}to{opacity:1;visibility:visible}}
   @keyframes ex-gutter{from{transform:none}to{transform:translate(4.5%,65.01%) scale(.7)}}
   @keyframes ex-bag{from{transform:none}to{transform:translate(4.5%,21.34%) scale(.7)}}
   @keyframes ex-drip{from{transform:none}to{transform:translate(4.5%,-5.54%) scale(.7)}}
@@ -189,12 +199,25 @@ form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 label{font-size:.9rem;color:var(--ink-2)}
 input,select{font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.75em .9em;width:100%}
 input:focus,select:focus{outline:none;border-color:var(--coral)}
+input:focus-visible,select:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.sent:empty{display:none}
 form .btn{grid-column:1/-1}
-.sent{display:none;grid-column:1/-1;color:var(--ink-2)}
-.sent.on{display:block}
+.sent{grid-column:1/-1;color:var(--ink-2)}
 @media(max-width:600px){form{grid-template-columns:1fr}}
 
 footer{border-top:1px solid var(--line);padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));color:var(--ink-2);font-size:.92rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px 28px;flex-wrap:wrap}
 footer nav{display:flex;gap:20px;flex-wrap:wrap}
 @media(hover:hover) and (pointer:fine){footer a:hover{color:var(--ink)}}
+
+/* phones: the working action stays in reach after the hero (WhatsApp, phone) */
+.dock{display:none}
+@media(max-width:860px){
+  .dock{position:fixed;inset:auto 0 0;z-index:30;display:flex;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(18,20,19,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+    transform:translateY(110%);transition:transform .3s var(--ease-out)}
+  .dock.on{transform:none}
+  .dock .btn{flex:1}
+  body{padding-bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){.dock{transition:none}}
