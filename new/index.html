@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#121413">
 <meta property="og:title" content="תותלוי | מערכות גידול מנותק מצע">
 <meta property="og:description" content="תעלות גידול, מצעי קוקוס ופרלייט, השקיה ודישון, שתילים ופיתוח זנים לגידול מנותק מצע.">
-<meta property="og:image" content="https://tutaluy.com/new/assets/hero/exploded.jpg">
+<meta property="og:image" content="https://tutaluy.com/new/assets/img/exploded.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&amp;family=Rubik:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -38,12 +38,12 @@
     </div>
     <div class="stage lightbox" id="stage">
       <div class="frame">
-        <img class="layer l-gutter" src="assets/hero/gutter.webp" alt="">
-        <img class="layer l-bag" src="assets/hero/bag.webp" alt="">
-        <img class="layer l-drip" src="assets/hero/drip.webp" alt="">
-        <img class="layer l-plants" src="assets/hero/plants.webp" alt="">
-        <img class="layer l-fruit" src="assets/hero/fruit.webp" alt="">
-        <img class="master" src="assets/hero/master.webp" alt="מערכת הגידול של תותלוי: תעלה, גרובג, טפטוף ושתילי תות">
+        <img class="layer l-gutter" src="assets/img/gutter.webp" alt="">
+        <img class="layer l-bag" src="assets/img/bag.webp" alt="">
+        <img class="layer l-drip" src="assets/img/drip.webp" alt="">
+        <img class="layer l-plants" src="assets/img/plants.webp" alt="">
+        <img class="layer l-fruit" src="assets/img/fruit.webp" alt="">
+        <img class="master" src="assets/img/master.webp" alt="מערכת הגידול של תותלוי: תעלה, גרובג, טפטוף ושתילי תות">
       </div>
       <a class="band b-fruit" href="breeding.html" data-layer="fruit"><span class="callout">פיתוח זנים</span></a>
       <a class="band b-plants" href="seedlings.html" data-layer="plants"><span class="callout">שתילים</span></a>
@@ -75,11 +75,11 @@
     </div>
     <form id="leadForm" novalidate>
       <div class="f"><label for="n">שם</label><input id="n" name="name" autocomplete="name" required></div>
-      <div class="f"><label for="p">טלפון</label><input id="p" name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" required></div>
-      <div class="f"><label for="c">גידול</label><select id="c" name="crop"><option>תות שדה</option><option>עגבנייה</option><option>מלפפון</option><option>פלפל</option><option>אחר</option></select></div>
+      <div class="f"><label for="p">טלפון</label><input id="p" name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" pattern="[0-9+\-\s]{9,15}" title="מספר טלפון, למשל 050-1234567" required></div>
+      <div class="f"><label for="c">גידול</label><select id="c" name="crop" required><option value="" disabled selected>בחרו גידול</option><option>תות שדה</option><option>עגבנייה</option><option>מלפפון</option><option>פלפל</option><option>אחר</option></select></div>
       <div class="f"><label for="s">דונם (לא חובה)</label><input id="s" name="size" inputmode="decimal" dir="ltr"></div>
       <button class="btn" type="submit">שליחה בוואטסאפ</button>
-      <p class="sent" id="sent" role="status">פתחנו את וואטסאפ עם הפרטים. אם לא נפתח: 054-6324746.</p>
+      <p class="sent" id="sent" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
@@ -88,6 +88,7 @@
   <span>© תותלוי בע"מ · הרימון 91, מושב אחיטוב</span>
   <nav aria-label="תחומים"><a href="gutters.html">תעלות גידול</a><a href="media.html">מצעי גידול</a><a href="seedlings.html">שתילים</a><a href="breeding.html">פיתוח זנים</a></nav>
 </div></footer>
+<div class="dock" aria-label="יצירת קשר"><a class="btn" href="https://wa.me/972546324746?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA%20%D7%92%D7%99%D7%93%D7%95%D7%9C." target="_blank" rel="noopener">וואטסאפ</a><a class="btn ghost" href="tel:+972546324746">חיוג</a></div>
 <script src="assets/site.js" defer></script>
 </body>
 </html>
