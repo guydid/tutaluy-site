@@ -31,7 +31,17 @@
     if (!form.reportValidity()) return;
     var f = form.elements, lines = ['שלום, אשמח לשמוע על מערכת גידול.', 'שם: ' + f.name.value.trim(), 'טלפון: ' + f.phone.value.trim(), 'גידול: ' + f.crop.value];
     if (f.size.value.trim()) lines.push('שטח: ' + f.size.value.trim() + ' דונם');
-    window.open('https://wa.me/972546324746?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-    document.getElementById('sent').classList.add('on');
+    var url = 'https://wa.me/972546324746?text=' + encodeURIComponent(lines.join('\n'));
+    var w = window.open(url, '_blank');
+    if (!w) { location.href = url; return; }   /* popup blocked: go in this tab rather than lose the lead */
+    w.opener = null;
+    document.getElementById('sent').textContent = 'פתחנו את וואטסאפ עם הפרטים. אם לא נפתח: 054-6324746.';
   });
+})();
+
+/* phones: show the WhatsApp/phone dock once the hero has scrolled away */
+(function () {
+  var dock = document.querySelector('.dock'), hero = document.querySelector('.hero');
+  if (!dock || !hero || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) { dock.classList.toggle('on', !e[0].isIntersecting); }).observe(hero);
 })();
