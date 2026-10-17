@@ -89,17 +89,28 @@
   var tick=0;
   if(!reduce)setInterval(function(){tick++;var last=hd[hd.length-1];hd.push(tick%14===0?last+9:last-.62);hd.shift();drawHero();},1500);
 
-  /* greenhouse morning behind the hero: rows of gutters catching light, a few ripe fruit */
-  var sky=document.getElementById('sky');
+  /* behind the hero: gentle heartbeat lines, like the one running through the logo */
+  var sky=document.getElementById('sky'),skyT=0;
+  function beat(x,w,h,y,amp,phase,period,col,lw){
+    x.beginPath();x.lineJoin='round';x.lineCap='round';x.strokeStyle=col;x.lineWidth=lw;
+    for(var px=-10;px<=w+10;px+=2){
+      var u=((px+phase)%period+period)%period/period, dy=0;
+      if(u>.30&&u<.34)dy=-amp*.35*Math.sin((u-.30)/.04*Math.PI);
+      else if(u>=.34&&u<.40)dy=amp*Math.sin((u-.34)/.06*Math.PI);
+      else if(u>=.40&&u<.50)dy=-amp*.55*Math.sin((u-.40)/.10*Math.PI);
+      else if(u>=.50&&u<.62)dy=amp*.22*Math.sin((u-.50)/.12*Math.PI);
+      px===-10?x.moveTo(px,y+dy):x.lineTo(px,y+dy);
+    }
+    x.stroke();
+  }
   function drawSky(){var g=fit(sky);if(!g)return;var x=g.x,w=g.w,h=g.h;
-    var grad=x.createLinearGradient(0,0,0,h);grad.addColorStop(0,'#E6EDE4');grad.addColorStop(.6,'#EEF0EA');grad.addColorStop(1,'#F4F5F1');x.fillStyle=grad;x.fillRect(0,0,w,h);
-    var lg=x.createRadialGradient(w*.78,h*.08,0,w*.78,h*.08,w*.5);lg.addColorStop(0,'rgba(255,250,230,.9)');lg.addColorStop(1,'rgba(255,250,230,0)');x.fillStyle=lg;x.fillRect(0,0,w,h);
-    for(var r=0;r<7;r++){var y=h*.3+r*h*.085,s=.45+r*.09;x.strokeStyle='rgba(27,30,28,'+(.05+r*.015)+')';x.lineWidth=2*s;
-      x.beginPath();x.moveTo(-20,y);x.lineTo(w+20,y+r*4);x.stroke();
-      for(var c=0;c<w/60;c++){var cx=c*60*s+r*17,cy=y+(c%3)*3+r*4*(cx/w);x.fillStyle='rgba(78,155,99,'+(.14+r*.04)+')';x.beginPath();x.arc(cx,cy-6*s,2.4*s,0,7);x.fill();
-        if((c+r)%4===0){x.fillStyle='rgba(225,80,80,'+(.35+r*.07)+')';x.beginPath();x.arc(cx+8*s,cy-3*s,2.8*s,0,7);x.fill();}}}
+    var grad=x.createLinearGradient(0,0,0,h);grad.addColorStop(0,'#E8EEE7');grad.addColorStop(1,'#F4F5F1');x.fillStyle=grad;x.fillRect(0,0,w,h);
+    var period=Math.max(420,w*.55);
+    for(var r=0;r<6;r++){var y=h*(.22+r*.11),amp=h*.05*(1-r*.08),al=.10+r*.035;
+      beat(x,w,h,y,amp,skyT*(.4+r*.12)+r*period*.37,period,'rgba(0,192,98,'+al+')',1.5+r*.3);}
   }
   drawSky();
+  if(!reduce)(function loop(){skyT+=.6;drawSky();requestAnimationFrame(loop);})();
 
   var defs={vwc:[61,6,23,'#EDEEEA'],ec:[2.0,.3,3,'#EDEEEA'],drain:[14,8,5,'#F2C14E'],temp:[22.6,3,17,'#EDEEEA'],water:[0,0,1,'#EDEEEA'],ph:[5.8,.3,11,'#EDEEEA']};
   function drawTiles(){document.querySelectorAll('.tile').forEach(function(t){var k=t.getAttribute('data-k'),d=defs[k],c=t.querySelector('canvas'),g=fit(c);if(!g)return;
