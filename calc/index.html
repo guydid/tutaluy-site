@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מחשבון הטענת שקי קוקוס | תותלוי</title>
+<meta name="description" content="הטענת סידן לשקי קוקוס לפני שתילה: כמה ליטר תמיסה מהמיכל להעביר בכל מקטע השקיה, מינון הזרקה, EC בטפטפת ומשטר פולסים.">
+<meta name="theme-color" content="#121413">
+<meta property="og:title" content="מחשבון הטענת שקי קוקוס | תותלוי">
+<meta property="og:description" content="הטענת סידן לשקי קוקוס לפני שתילה: כמה ליטר תמיסה מהמיכל להעביר בכל מקטע השקיה.">
+<meta property="og:image" content="https://tutaluy.com/assets/img/exploded.jpg">
+<link rel="canonical" href="https://tutaluy.com/calc/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&amp;family=Rubik:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* calculator: same system as the site (dark surface cards, pills, coral), result panel pinned on desktop */
+header{position:static;background:var(--bg);padding-bottom:0;border-bottom:1px solid var(--line)}
+.chero{padding:clamp(40px,6vw,72px) 0 clamp(24px,4vw,40px)}
+.chero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.chero h1{font-family:var(--display);font-size:clamp(3.4rem,9vw,7rem);line-height:.88;margin-top:10px}
+.chero p{color:var(--ink-2);margin-top:14px;max-width:48ch}
+.cgrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3vw,36px);align-items:start;padding-bottom:clamp(40px,6vw,72px)}
+@media(max-width:900px){.cgrid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);padding:clamp(18px,2.6vw,28px);margin-bottom:16px}
+.card h2{font-size:1.2rem;font-weight:600;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.card h2 .n{font-family:var(--display);font-size:1.9rem;line-height:1;color:var(--coral);min-width:1.4em}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:560px){.row,.row.three{grid-template-columns:1fr}}
+.f{display:grid;gap:6px;margin-bottom:14px;align-content:start}
+.lbl{font-size:.9rem;color:var(--ink-2)}
+.hint{color:var(--ink-2);opacity:.75;font-size:.82em}
+.unit{position:relative}
+.unit .u{position:absolute;inset-inline-start:12px;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--ink-2);pointer-events:none;direction:ltr}
+.unit input{padding-inline-start:3.6em;padding-inline-end:.9em;direction:ltr;text-align:left;font-variant-numeric:tabular-nums}
+input[readonly]{color:var(--ink-2);background:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{font:inherit;font-size:.88rem;padding:.45em 1em;border-radius:999px;border:0;cursor:pointer;background:transparent;color:var(--ink);
+  box-shadow:inset 0 0 0 1px rgba(237,238,234,.3);transition:background-color .15s ease,color .15s ease}
+.chip.on{background:var(--coral);color:var(--bg);box-shadow:none;font-weight:500}
+@media(hover:hover) and (pointer:fine){.chip:not(.on):hover{background:rgba(237,238,234,.08)}}
+.eq{font-size:.86rem;color:var(--ink-2);margin-top:6px;font-variant-numeric:tabular-nums}
+.alert{padding:12px 14px;border-radius:12px;font-size:.92rem;line-height:1.5;margin-top:12px;border:1px solid var(--line)}
+.alert.w{border-color:rgba(245,105,107,.5);background:rgba(245,105,107,.08)}
+.alert.e{border-color:var(--coral);background:rgba(245,105,107,.16)}
+.alert.i{color:var(--ink-2)}
+/* result */
+.res{position:sticky;top:20px}
+.res .card{border-color:rgba(245,105,107,.45);margin-bottom:16px}
+.headline .lab{font-size:.9rem;color:var(--ink-2)}
+.big{font-family:var(--display);font-size:clamp(5rem,9vw,7.5rem);line-height:.9;margin-top:6px;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:.18em;direction:rtl}
+.big .su{font-family:"Rubik",system-ui,sans-serif;font-size:1.1rem;font-weight:500;color:var(--ink-2)}
+.sec2{margin-top:10px;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.sec2 span{color:var(--ink-2);font-size:.92rem}
+.note{font-size:.86rem;color:var(--ink-2);margin-top:8px;line-height:1.5}
+.kv{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid var(--line);font-size:.95rem}
+.kv .k{color:var(--ink-2)}
+.kv .v{font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv .v small{font-weight:400;color:var(--ink-2);font-size:.84em;margin-inline-start:.3em}
+.headline+.kv{margin-top:18px}
+details.more{margin-top:16px}
+details.more>summary,details.bo>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:500;color:var(--ink)}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--coral)}
+details[open]>summary::before{content:"–"}
+.sec-t{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin:18px 0 6px;font-weight:500}
+.pbox{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px}
+.pbox>b{display:block;margin-bottom:4px}
+.guide{margin-top:16px;font-size:.92rem;color:var(--ink-2);line-height:1.6;display:grid;gap:10px}
+.guide b{color:var(--ink)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.actions .btn{min-height:44px}
+/* backoffice */
+details.bo{margin-bottom:clamp(40px,6vw,72px)}
+details.bo .card{margin-top:12px}
+.sub{color:var(--ink-2);font-size:.92rem;margin-bottom:6px}
+.cfoot{border-top:1px solid var(--line);padding:clamp(32px,5vw,56px) 0;font-size:.92rem;color:var(--ink-2);line-height:1.7;display:grid;gap:12px;max-width:80ch}
+.cfoot b{color:var(--ink)}
+/* phones: the answer rides along at the bottom */
+.mbar{display:none}
+@media(max-width:900px){
+  .res{position:static}
+  .mbar{position:fixed;inset:auto 0 0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:10px 20px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(18,20,19,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .mbar .lab{font-size:.8rem;color:var(--ink-2)}
+  .mbar .val{font-family:var(--display);font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+  .mbar .val small{font-family:"Rubik",system-ui,sans-serif;font-size:.85rem;color:var(--ink-2);margin-inline-start:.3em}
+  .mbar .inj{font-size:.85rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+  body{padding-bottom:84px}
+}
+@media print{
+  header,.mbar,.actions,.chero p,details.bo,.noprint{display:none!important}
+  body{background:#fff;color:#000} .card{background:#fff;border-color:#000;color:#000} .kv .k,.lbl,.eq,.note{color:#333}
+  .cgrid{grid-template-columns:1fr} .res{position:static} details.more{display:block} .big{color:#000}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../" aria-label="תותלוי, לעמוד הבית"><img src="../assets/img/logo.webp" alt="tutaluy" width="480" height="205" decoding="async"></a>
+  <nav aria-label="ראשי"><a href="../gutters.html">תעלות גידול</a><a href="../media.html">מצעי גידול</a><a href="../seedlings.html">שתילים</a><a href="../breeding.html">פיתוח זנים</a></nav>
+  <a class="btn" href="../#contact">דברו איתנו</a>
+</div></header>
+<main>
+<section class="chero"><div class="wrap">
+  <div class="eyebrow">מחשבון · שקי קוקוס</div>
+  <h1>הטענת<br>השקים.</h1>
+  <p>הטענת סידן לפני השתילה: כמה ליטר תמיסה מהמיכל להעביר בכל מקטע השקיה, באיזה מינון הזרקה, ובאיזה משטר פולסים.</p>
+</div></section>
+
+<div class="wrap cgrid">
+  <div>
+    <div class="card">
+      <h2><span class="n">01</span> מקטע ההשקיה</h2>
+      <div class="row">
+        <label class="f"><span class="lbl">סוג שק</span>
+          <select id="bag">
+            <option value="straw">שק תות — 10×10×100 · 11 פתחים</option>
+            <option value="veg">שק ירקות — 15×15×100 · 4 פתחים</option>
+          </select></label>
+        <label class="f"><span class="lbl">שקים במקטע</span>
+          <div class="unit"><span class="u">שקים</span><input id="bagsSeg" type="number" inputmode="numeric" min="1" step="50" value="1800"></div></label>
+      </div>
+      <div class="f"><span class="lbl">מינון — גרם CaNO₃ לשק</span>
+        <div class="chips" style="margin-top:0">
+          <button type="button" class="chip" id="d35" data-g="35">35 ג׳</button>
+          <button type="button" class="chip" id="dProto"></button>
+        </div>
+      </div>
+      <div class="eq" id="segEq"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="n">02</span> התמיסה במיכל</h2>
+      <label class="f"><span class="lbl">מוצר</span>
+        <select id="fert">
+          <option value="haifa">Haifa Cal GG — מוצק · 19% Ca</option>
+          <option value="kalanit">קלניט 150 — נוזלי · 10.7% Ca</option>
+          <option value="other">אחר — הזנה ידנית…</option>
+        </select>
+      </label>
+      <div id="fertCustom" hidden>
+        <div class="row three">
+          <label class="f"><span class="lbl">מצב צבירה</span>
+            <select id="fState"><option value="solid">מוצק</option><option value="liquid">נוזלי</option></select></label>
+          <label class="f"><span class="lbl">תכולת סידן <span class="hint">% משקלי</span></span>
+            <div class="unit"><span class="u">%Ca</span><input id="fCa" type="number" inputmode="decimal" min="0.1" max="40" step="0.1" value="19"></div></label>
+          <label class="f" id="densWrap" hidden><span class="lbl">צפיפות <span class="hint">ק״ג/ל׳</span></span>
+            <div class="unit"><span class="u">kg/L</span><input id="fDens" type="number" inputmode="decimal" min="0.8" max="2" step="0.01" value="1.4"></div></label>
+        </div>
+        <div class="alert i" style="margin-top:0">כתוב <b>CaO</b> ולא Ca? הכפילו ב-0.715 — 26.5% CaO = 19% Ca.</div>
+      </div>
+      <div class="row">
+        <label class="f"><span class="lbl">דשן במיכל <span class="hint" id="amtHint">ק״ג</span></span>
+          <div class="unit"><span class="u" id="amtU">kg</span><input id="amt" type="number" inputmode="decimal" min="0.1" step="5" value="200"></div>
+          <div class="chips" id="amtChips"></div></label>
+        <label class="f"><span class="lbl">מים במיכל <span class="hint">ליטר</span></span>
+          <div class="unit"><span class="u">L</span><input id="tank" type="number" inputmode="numeric" min="1" step="100" value="1000"></div></label>
+      </div>
+      <div class="eq" id="tankEq"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="n">03</span> מים להטענה</h2>
+      <div class="chips" style="margin-top:0">
+        <button type="button" class="chip" id="w0" data-r="1.4"></button>
+        <button type="button" class="chip" id="w1" data-r="1.6"></button>
+        <button type="button" class="chip" id="w2" data-r="2.0"></button>
+      </div>
+      <div class="eq" id="washEq" style="margin-top:9px"></div>
+    </div>
+  </div>
+
+  <div class="res">
+    <div class="card">
+      <h2><span class="n">←</span> התוצאה</h2>
+      <div class="headline">
+        <div class="lab">תמיסה מהמיכל לכל מקטע השקיה</div>
+        <div class="big"><span id="hVal">—</span><span class="su">ליטר</span></div>
+        <div class="sec2" id="hSec"></div>
+        <div class="note" id="hNote"></div>
+      </div>
+      <div class="kv"><span class="k">מינון הזרקה</span><span class="v" id="rInj">—</span></div>
+      <div class="kv"><span class="k">סה״כ מים למקטע</span><span class="v" id="rTotW">—</span></div>
+      <div class="kv"><span class="k">EC מוערך בטפטפת</span><span class="v" id="rEcDrip">—</span></div>
+      <div id="alerts"></div>
+
+      <details class="more" id="more">
+        <summary>פרטים מלאים</summary>
+        <div class="sec-t">המיכל</div>
+        <div class="kv"><span class="k">ריכוז סידן במיכל</span><span class="v" id="rStock">—</span></div>
+        <div class="kv"><span class="k">ריכוז המוצר</span><span class="v" id="rConc">—</span></div>
+        <div class="kv"><span class="k">מיכל אחד מספיק ל־</span><span class="v" id="rSegsPerTank">—</span></div>
+        <div class="sec-t">ההטענה</div>
+        <div class="kv"><span class="k">מים לשק</span><span class="v" id="rPerBag">—</span></div>
+        <div class="kv"><span class="k">יחס לנפח המצע</span><span class="v" id="rRatio">—</span></div>
+        <div class="kv"><span class="k">נפחים נקבוביים</span><span class="v" id="rPore">—</span></div>
+        <div class="pbox">
+          <b>משטר פולסים</b>
+          <div class="kv"><span class="k">פולס בודד <span class="hint">5% מנפח המצע</span></span><span class="v" id="pVol">—</span></div>
+          <div class="kv"><span class="k">למקטע בכל פולס</span><span class="v" id="pSeg">—</span></div>
+          <div class="kv"><span class="k">מספר פולסים</span><span class="v" id="pN">—</span></div>
+          <div class="kv"><span class="k">המתנה בין פולסים</span><span class="v">20 <small>דקות</small></span></div>
+          <div class="kv"><span class="k">משך ההטענה</span><span class="v" id="pDur">—</span></div>
+          <div class="kv"><span class="k">תמיסה בכל פולס</span><span class="v" id="pStock">—</span></div>
+        </div>
+        <div class="guide">
+          <p><b>הסיום נקבע במדידה.</b> אחרי <span id="gWater">—</span> — מים נקיים באותו משטר פולסים עד ש-EC מגיע ליעד. ה-EC בניקוז יורד מהר מהמצע; אמתו בבדיקת מצע 1:1.5.</p>
+          <p><b>בסיום</b> — דגימת קוקוס לאנליזה כולל בריום כלורי. אין דשן בשק: התחילו הזנה מיד אחרי השתילה, +30% סידן ופחות אשלגן.</p>
+        </div>
+      </details>
+
+      <div class="actions">
+        <button class="btn" type="button" onclick="window.print()">הדפסת המרשם</button>
+        <a class="btn ghost" href="https://wa.me/972546324746?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%98%D7%A2%D7%A0%D7%AA%20%D7%A9%D7%A7%D7%99%D7%9D" target="_blank" rel="noopener">שאלה בוואטסאפ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <details class="bo">
+    <summary>הגדרות ופרוטוקול</summary>
+    <div class="card">
+      <div class="sub">ברירות מחדל לפי פרוטוקול Dutch Plantin. שינוי כאן משפיע על כל החישוב.</div>
+      <div class="sec-t">עקיפה ידנית</div>
+      <div class="row">
+        <label class="f"><span class="lbl">מינון — גרם CaNO₃ לשק</span>
+          <div class="unit"><span class="u">גרם</span><input id="gBag" type="number" inputmode="decimal" min="1" step="0.5" value="41.5"></div>
+          <div class="eq" id="doseEq"></div>
+          <div class="chips"><button type="button" class="chip" id="doseBtn"></button></div></label>
+        <label class="f"><span class="lbl">מים להטענה <span class="hint">ליטר לשק</span></span>
+          <div class="unit"><span class="u">L/שק</span><input id="washL" type="number" inputmode="decimal" min="1" step="0.5" value="16"></div>
+          <div class="eq">הבחירה בשלב 03 דורסת ערך זה.</div></label>
+      </div>
+      <div class="row">
+        <label class="f"><span class="lbl">גודל אריזה <span class="hint" id="packUnitHint">ק״ג</span></span>
+          <div class="unit"><span class="u" id="packU">kg</span><input id="packSize" type="number" inputmode="decimal" min="0.5" step="0.5" value="25"></div>
+          <div class="eq">לחישוב "כמה שקים" מתחת לשדה הדשן.</div></label>
+        <label class="f"><span class="lbl">סה״כ דשן שנדרש</span><input id="amtEcho" type="text" readonly></label>
+      </div>
+      <div class="sec-t">מצע ופרוטוקול</div>
+      <div class="row">
+        <label class="f"><span class="lbl">סוג מצע</span>
+          <select id="medium">
+            <option value="40">100% פיט — 40 ק״ג CaNO₃ למשטח</option>
+            <option value="25">FRESH50 — 25 ק״ג (120×100)</option>
+            <option value="30">FRESH50 — 30 ק״ג (120×120)</option>
+            <option value="25o">Optima — 20–30 לפי אחוז הצ׳יפס</option>
+          </select></label>
+        <label class="f"><span class="lbl">תכולת מים במצע <span class="hint">% מנפח השק</span></span>
+          <div class="unit"><span class="u">%</span><input id="wFrac" type="number" inputmode="numeric" min="30" max="95" step="1" value="70"></div></label>
+      </div>
+      <div class="sec-t">שק תות 10×10×100</div>
+      <div class="row three">
+        <label class="f"><span class="lbl">נפח <span class="hint">ליטר</span></span><div class="unit"><span class="u">L</span><input id="sVol" type="number" inputmode="decimal" step="0.5" value="10"></div></label>
+        <label class="f"><span class="lbl">שקים למשטח</span><input id="sPal" type="number" inputmode="numeric" step="1" value="965"></label>
+        <label class="f"><span class="lbl">שקים לדונם</span><input id="sDun" type="number" inputmode="numeric" step="1" value="818"></label>
+      </div>
+      <div class="sec-t">שק ירקות 15×15×100</div>
+      <div class="row three">
+        <label class="f"><span class="lbl">נפח <span class="hint">ליטר</span></span><div class="unit"><span class="u">L</span><input id="vVol" type="number" inputmode="decimal" step="0.5" value="22.5"></div></label>
+        <label class="f"><span class="lbl">שקים למשטח</span><input id="vPal" type="number" inputmode="numeric" step="1" value="430"></label>
+        <label class="f"><span class="lbl">שקים לדונם</span><input id="vDun" type="number" inputmode="numeric" step="1" value="625"></label>
+      </div>
+      <div class="sec-t">מסיסות</div>
+      <div class="row">
+        <label class="f"><span class="lbl">ריכוז מומלץ מרבי <span class="hint" id="solH1">ג׳/ל׳</span></span>
+          <div class="unit"><span class="u" id="solU1">g/L</span><input id="solRec" type="number" inputmode="numeric" min="1" step="10" value="250"></div></label>
+        <label class="f"><span class="lbl">גבול מסיסות <span class="hint">ב-20°C</span></span>
+          <div class="unit"><span class="u" id="solU2">g/L</span><input id="solMax" type="number" inputmode="numeric" min="1" step="10" value="1200"></div></label>
+      </div>
+      <div class="alert i" style="margin-top:0">ברירת מחדל לחנקת סידן מוצקה: מסיסות ~1,200 ג׳/ל׳ ב-20°C, ריכוז מיכל מומלץ 250 ג׳/ל׳. לנוזלי — עד 500 מ״ל/ל׳. ודאו מול היצרן.</div>
+      <div class="sec-t">כיול EC</div>
+      <div class="row">
+        <label class="f"><span class="lbl">מקדם EC <span class="hint">mS/cm למילימול Ca</span></span>
+          <div class="unit"><span class="u">k</span><input id="kEC" type="number" inputmode="decimal" min="0.1" max="0.5" step="0.001" value="0.230"></div></label>
+        <label class="f"><span class="lbl">שקילות</span><input id="kEcho" type="text" readonly></label>
+      </div>
+      <div class="alert i" style="margin-top:0">מד ה-EC בשטח הוא הקובע.</div>
+    </div>
+  </details>
+</div>
+
+<div class="wrap"><div class="cfoot">
+  <p><b>איך זה מחושב.</b> מינון לפי פרוטוקול Dutch Plantin 2025 — 40 ק״ג CaNO₃ למשטח ב-100% פיט, 25–30 ל-FRESH50, 20–30 ל-Optima; שתי צורות השק מתכנסות לכ-4.14 ג׳ לליטר מצע. כמות התמיסה = הסידן שהמקטע צריך ÷ ריכוז הסידן במיכל, ולכן אינה תלויה בכמות המים. המים קובעים רק את ריכוז ההזרקה ואת ה-EC בטפטפת. המקסימום למיכל = הריכוז המומלץ × כמות המים; ברירות המחדל ניתנות לשינוי בהגדרות.</p>
+  <p><b>חשוב.</b> נקודת פתיחה לתכנון, לא תחליף למדידה. עבדו עם מד EC, בדקו את נוזל הניקוז, ושלחו דגימת קוקוס לאנליזה לפני שתילה.</p>
+</div></div>
+</main>
+<footer><div class="wrap">
+  <div class="fbrand"><img src="../assets/img/logo-full.webp" alt="tutaluy — soilless projects" width="720" height="307" loading="lazy" decoding="async"><span>© תותלוי בע"מ · הרימון 91, מושב אחיטוב</span></div>
+  <nav aria-label="תחומים"><a href="../gutters.html">תעלות גידול</a><a href="../media.html">מצעי גידול</a><a href="../seedlings.html">שתילים</a><a href="../breeding.html">פיתוח זנים</a><a href="./" aria-current="page">מחשבון</a></nav>
+</div></footer>
+<div class="mbar" aria-live="polite">
+  <div><div class="lab">תמיסה למקטע</div><div class="val"><span id="mVal">—</span><small>ליטר</small></div></div>
+  <div class="inj" id="mInj"></div>
+</div>
+<script src="calc.js" defer></script>
+</body>
+</html>
