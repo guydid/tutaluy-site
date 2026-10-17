@@ -239,3 +239,9 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 [dir=ltr] .pin p{max-width:34ch}
 [dir=ltr] .hero.page h1{font-size:clamp(3.4rem,8vw,6.8rem)}
 @media(min-width:861px){[dir=ltr] .hero.page .wrap{padding-inline-end:calc(min(40vw,520px) + clamp(20px,4vw,48px) + 36px)}}
+
+/* ---------- brand: the logo artwork (wordmark + leaf in the header, with the tagline in the footer) ---------- */
+.brand img{display:block;height:40px;width:auto}
+@media(max-width:900px){.brand img{height:34px}}
+.fbrand{display:grid;gap:12px}
+.fbrand img{height:52px;width:auto;opacity:.92}
