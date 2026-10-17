@@ -17,6 +17,8 @@
     'm2':'Approved. For plot 2 do 3 pulses of 560/480/640.',
     'm3':'Updated on the controller: plot 2 at 08:45, 11:45, 14:45 with 560/480/640 L. Tomorrow I\u2019ll check whether distribution improved.',
     'ch-time':'real message',
+    'm4':'Quick review of today.',
+    'm5':'Today went fine. Two things to watch:<br><b>Plot 5:</b> morning flow was low, only 300 L/h, and an error showed up at the end of the irrigation. Worth checking whether the filter or drippers are blocked.<br><b>Plot 4:</b> moisture is high and steady, 85\u201386%, but the measured bag barely drains after the morning, only 0.12 L. The row is probably still rewetting after the dry spell; I\u2019ll check again tomorrow morning.<br><b>Plot 3:</b> drain climbed through the day, 25% in the morning and 41\u201343% at noon, still under 50%. If it continues tomorrow we drop one pulse. <b>Plot 2:</b> the reduced pulses ran as planned. <b>Plot 1:</b> the noon pulse did its job, moisture stayed at 60\u201361.7% all day, well above the threshold. <b>Plots 6\u20137:</b> fine.',
     'ask':'Ask the assistant\u2026',
     'day-h':'One day<br>in the greenhouse.','day-l':'What you see on the screen, and what you do with it.',
     'd1h':'Morning','d1p':'Last night on the screen: substrate down to 58% moisture, drain EC steady. The first irrigation goes out on its own at sunrise.',
