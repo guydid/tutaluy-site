@@ -35,6 +35,11 @@ header.solid{padding-bottom:0;background:rgba(244,245,241,.88);-webkit-backdrop-
 header.solid .bar{height:60px}
 header.solid nav{display:none}
 header.solid .lang,header.solid .back{margin-inline-start:auto}
+header.solid .login{margin-inline-start:auto}
+header.solid .login+.lang{margin-inline-start:16px}
+.login{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 1em;border-radius:999px;font-size:.88rem;font-weight:500;background:var(--coral);color:#fff;white-space:nowrap;margin-inline-start:16px;transition:background-color .2s ease}
+@media(hover:hover){.login:hover{background:var(--coral-press)}}
+@media(max-width:900px){.login{margin-inline-start:auto}.login+.lang{margin-inline-start:0}}
 header .bar{display:flex;align-items:center;gap:28px;height:72px}
 .brand{display:inline-flex;align-items:center;direction:ltr}
 .brand img{height:40px;width:auto}

@@ -1,6 +1,6 @@
 (function(){
   var EN={
-    'nav-why':'Why','nav-back':'\u2190 tutaluy','f-priv':'Privacy','f-acc':'Accessibility','nav-ai':'Assistant','nav-day':'A day inside','nav-how':'How it works','nav-contact':'Contact',
+    'nav-why':'Why','login':'Sign in','nav-back':'\u2190 tutaluy','f-priv':'Privacy','f-acc':'Accessibility','nav-ai':'Assistant','nav-day':'A day inside','nav-how':'How it works','nav-contact':'Contact',
     'h1':'Talk<br>to the plant.','sub':'AI that learns your greenhouse and your plant, and turns it into water, fertiliser and yield.',
     'cta':'Talk to us','cta2':'What the plant says','obj-k':'Substrate moisture · Gutter 4','obj-live':'now',
     'why-h':'Irrigate by the plant,<br>not by the clock.','why-l':'When you see what happens in the substrate, every drop goes where it should.',
