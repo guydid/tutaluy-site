@@ -26,7 +26,7 @@
     'ok':'In range','low':'Below target','al-b':'Gutter 2','al-t':'Drain 14%, three irrigations in a row. Check the drippers.',
     'note':'Demo data. In your system the screen shows your own greenhouse.',
     'how-h':'A solution,<br>not equipment.','how-l':'We measure what the crop needs. Installation is part of the project.',
-    'st1h':'Measuring in the substrate','st1p':'Moisture, nutrition and temperature in the bag, and drainage at the end of the gutter.',
+    'st1h':'Measuring in substrate or soil','st1p':'Moisture, pH, EC, nutrition, temperature and drainage.',
     'st2h':'Collecting and learning','st2p':'The data goes to the cloud, and the system learns your greenhouse from it.',
     'st3h':'Screen and assistant','st3p':'Phone and desktop. What is happening now, what happened overnight, and an alert when something drifts. Reads from most irrigation controllers.',
     'pt1b':'Your data.','pt1':'On your server or in the cloud, open to export.',
