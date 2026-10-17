@@ -65,6 +65,9 @@
     a.textContent=lang==='en'?'Open WhatsApp with your details':'פתיחת וואטסאפ עם הפרטים';sent.appendChild(a);
   });
 
+  var hd=document.querySelector('header');
+  function onScroll(){hd.classList.toggle('solid',scrollY>40);}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function fit(c){var r=c.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);
     if(!r.width||!r.height)return null;c.width=r.width*dpr;c.height=r.height*dpr;var x=c.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);return {x:x,w:r.width,h:r.height};}

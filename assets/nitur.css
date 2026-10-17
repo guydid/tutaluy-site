@@ -28,8 +28,11 @@ img,svg,canvas{display:block;max-width:100%}
 @media(hover:hover){.btn:hover{background:var(--coral-press)}.btn.ghost:hover{background:rgba(27,30,28,.06)}}
 
 /* header over the hero */
-header{position:absolute;inset:env(safe-area-inset-top,0px) 0 auto;z-index:20;padding-bottom:28px;
-  background:linear-gradient(to bottom,rgba(244,245,241,.92),rgba(244,245,241,.6) 60%,rgba(244,245,241,0))}
+header{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);padding-bottom:28px;
+  background:linear-gradient(to bottom,rgba(244,245,241,.92),rgba(244,245,241,.6) 60%,rgba(244,245,241,0));
+  transition:background-color .25s ease,padding-bottom .25s ease,box-shadow .25s ease}
+header.solid{padding-bottom:0;background:rgba(244,245,241,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+header.solid .bar{height:60px}
 header .bar{display:flex;align-items:center;gap:28px;height:72px}
 .brand{display:inline-flex;align-items:center;direction:ltr}
 .brand img{height:40px;width:auto}
