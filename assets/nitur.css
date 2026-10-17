@@ -1,0 +1,168 @@
+@import url("fonts.css");
+
+/* NITUR — tutaluy's design language turned to daylight: light greenhouse-morning ground, Karantina/Rubik, pill controls,
+   square panels. The dark studio panel from tutaluy becomes the screen the grower looks at.
+   Layout: hero with a live reading → four promises → a day in the greenhouse (demo screen) → how it works → contact. */
+:root{
+  --bg:#F4F5F1; --bg-2:#E8EBE4; --panel:#1B1E1C; --panel-ink:#EDEEEA; --panel-ink-2:#A3A8A2;
+  --ink:#1B1E1C; --ink-2:#5E645F; --line:rgba(27,30,28,.14);
+  --coral:#0E9A52; --coral-press:#0B7F43; --logo:#00C062; --leaf:#4E9B63; --warn:#C9931A;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --display:"Karantina",sans-serif; --body:"Rubik",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--body);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:rgba(0,192,98,.3)}
+h1,h2,h3{margin:0;font-weight:700;text-wrap:balance}
+h1,h2{font-family:var(--display);line-height:.9;letter-spacing:0}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+img,svg,canvas{display:block;max-width:100%}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(clamp(20px,4vw,48px),env(safe-area-inset-left,0px));padding-right:max(clamp(20px,4vw,48px),env(safe-area-inset-right,0px))}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.5em;border-radius:999px;border:0;cursor:pointer;
+  font:inherit;font-weight:500;background:var(--coral);color:#fff;white-space:nowrap;user-select:none;transition:transform 160ms var(--ease-out),background-color .2s ease}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(27,30,28,.4)}
+@media(hover:hover){.btn:hover{background:var(--coral-press)}.btn.ghost:hover{background:rgba(27,30,28,.06)}}
+
+/* header over the hero */
+header{position:absolute;inset:env(safe-area-inset-top,0px) 0 auto;z-index:20;padding-bottom:28px;
+  background:linear-gradient(to bottom,rgba(244,245,241,.92),rgba(244,245,241,.6) 60%,rgba(244,245,241,0))}
+header .bar{display:flex;align-items:center;gap:28px;height:72px}
+.brand{display:inline-flex;align-items:center;direction:ltr}
+.brand img{height:40px;width:auto}
+footer .brand img{height:34px;opacity:.9}
+header nav{display:flex;gap:26px;margin-inline-start:auto}
+header nav a{display:inline-flex;align-items:center;min-height:44px}
+@media(hover:hover){header nav a:hover{color:var(--coral-press)}}
+.lang{display:inline-flex;align-items:center;justify-content:center;min-height:36px;min-width:44px;padding:0 .8em;border-radius:999px;border:0;cursor:pointer;
+  font:inherit;font-size:.88rem;font-weight:500;letter-spacing:.02em;color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1px rgba(27,30,28,.3);margin-inline-start:16px;transition:background-color .2s ease}
+@media(hover:hover){.lang:hover{background:rgba(27,30,28,.06)}}
+@media(max-width:900px){
+  header .bar{flex-wrap:wrap;height:auto;padding-top:12px;gap:10px 16px}
+  .lang{margin-inline-start:auto}
+  header nav{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;font-size:.95rem;scrollbar-width:none}
+  header nav::-webkit-scrollbar{display:none}
+  header nav a{white-space:nowrap}
+  .brand img{height:32px}
+}
+
+/* hero: a greenhouse morning, drawn */
+.hero{position:relative;min-height:min(86svh,820px);display:flex;align-items:flex-end;overflow:hidden;background:var(--bg-2)}
+.hero .sky{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(244,245,241,1) 0%,rgba(244,245,241,.55) 40%,rgba(244,245,241,.05) 70%,rgba(244,245,241,.5) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:170px;padding-bottom:clamp(36px,7vh,80px)}
+.hero h1{font-size:clamp(5rem,15vw,12.5rem);line-height:.82}
+.hero .sub{max-width:36ch;font-size:1.15rem;color:var(--ink-2);margin-top:16px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+/* the screen: tutaluy's object panel, now dark, showing what the plant says */
+.hero .obj{position:absolute;z-index:1;inset-inline-end:clamp(20px,4vw,48px);bottom:clamp(36px,7vh,80px);width:min(40vw,520px);max-width:100%;aspect-ratio:4/3;
+  background:var(--panel);color:var(--panel-ink);display:grid;grid-template-rows:auto 1fr auto;padding:22px 24px;box-shadow:0 24px 70px rgba(27,30,28,.28)}
+.obj .k{display:flex;justify-content:space-between;align-items:baseline;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--panel-ink-2)}
+.obj .k b{color:var(--panel-ink);font-weight:600}
+.obj canvas{width:100%;height:100%;min-height:0}
+.obj .v{display:flex;align-items:baseline;gap:.4em;font-family:var(--display);font-size:3.6rem;line-height:1;direction:ltr;justify-content:flex-end}
+.obj .v small{font-family:var(--body);font-size:.9rem;color:var(--panel-ink-2);letter-spacing:.04em}
+.obj .live{display:inline-flex;align-items:center;gap:.45em}
+.obj .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--logo);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media(max-width:860px){.hero .obj{display:none}}
+
+/* sections */
+.sec{padding-block:clamp(64px,9vw,112px)}
+.sec h2{font-size:clamp(2.6rem,5.6vw,4.4rem)}
+.sec .lede{color:var(--ink-2);margin-top:12px;max-width:44ch}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+
+/* four promises: big display words, one line each, hairline grid */
+.promise{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));margin-top:36px;border-top:1px solid var(--line)}
+.promise div{padding:26px 0 0 clamp(14px,2vw,28px);border-inline-start:1px solid var(--line);min-width:0}
+.promise div:first-child{border-inline-start:0;padding-inline-end:0}
+.promise .big{font-family:var(--display);font-size:clamp(3rem,5vw,4.6rem);line-height:.9}
+.promise .big em{font-style:normal;color:var(--coral)}
+.promise p{color:var(--ink-2);margin-top:12px;max-width:28ch}
+@media(max-width:700px){.promise{grid-template-columns:1fr 1fr;border-top:0}.promise div{padding:18px 0 0 14px}.promise div:nth-child(odd){border-inline-start:0;padding-inline-start:0;padding-inline-end:14px}}
+
+/* a day in the greenhouse: the screen in three moments */
+.day{margin-top:36px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media(max-width:860px){.day{grid-template-columns:1fr}}
+.path{list-style:none;margin:0;padding:0;display:grid;gap:0;border-inline-start:1px solid var(--line)}
+.path li{position:relative;padding:0 22px 26px 0;min-width:0}
+.path li::before{content:"";position:absolute;top:9px;inset-inline-start:-5px;width:9px;height:9px;border-radius:50%;background:var(--coral)}
+.path .tag{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.path h3{font-size:1.15rem;font-weight:600;margin-top:2px}
+.path p{color:var(--ink-2);font-size:.95rem;margin-top:6px;max-width:34ch}
+.screen{background:var(--panel);color:var(--panel-ink);padding:clamp(16px,2.4vw,28px);display:grid;gap:14px;box-shadow:0 24px 70px rgba(27,30,28,.22);min-width:0}
+.screen .top{display:flex;justify-content:space-between;align-items:baseline;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--panel-ink-2)}
+.screen .top b{color:var(--panel-ink);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media(max-width:480px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:rgba(237,238,234,.06);padding:12px 12px 10px;display:grid;gap:6px;min-width:0}
+.tile .k{display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--panel-ink-2)}
+.tile .v{font-family:var(--display);font-size:2.4rem;line-height:1;direction:ltr;text-align:end;font-variant-numeric:tabular-nums}
+.tile .v small{font-family:var(--body);font-size:.72rem;color:var(--panel-ink-2);margin-inline-start:.3em}
+.tile canvas{width:100%;height:34px}
+.tile .st{font-size:.78rem;color:var(--panel-ink-2);display:flex;align-items:center;gap:.4em}
+.tile .st::before{content:"";width:7px;height:7px;border-radius:50%;background:#8FD19E}
+.tile.warn .st::before{background:#F2C14E}
+.tile.warn .st{color:#F2C14E}
+.alert{display:flex;gap:12px;align-items:center;padding:12px 14px;background:rgba(242,193,78,.14);border-inline-start:3px solid #F2C14E;font-size:.95rem}
+.alert b{font-weight:600}
+.alert span{color:var(--panel-ink-2);font-size:.85rem;margin-inline-start:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+.note{margin-top:14px;font-size:.85rem;color:var(--ink-2)}
+/* the assistant: the same dark screen, as a conversation */
+.chat{gap:10px}
+.msg{max-width:88%;padding:10px 14px;font-size:.95rem;line-height:1.5;text-wrap:pretty}
+.msg.me{background:var(--logo);color:#07301a;margin-inline-start:auto;border-radius:16px 16px 4px 16px}
+.msg.ai{background:rgba(237,238,234,.08);border-radius:16px 16px 16px 4px}
+[dir=ltr] .msg.me{border-radius:16px 16px 4px 16px}
+[dir=ltr] .msg.ai{border-radius:16px 16px 16px 4px}
+.msg.wide{max-width:100%}
+.msg table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.82rem;font-variant-numeric:tabular-nums}
+.msg th,.msg td{text-align:start;padding:5px 6px;border-bottom:1px solid rgba(237,238,234,.12);vertical-align:top}
+.msg th{font-weight:500;color:var(--panel-ink-2);letter-spacing:.04em}
+.msg b{font-weight:600}
+.ask{margin-top:6px;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(237,238,234,.25);color:var(--panel-ink-2);font-size:.92rem}
+.ask b{font-weight:500}
+
+/* how it works: three steps */
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px}
+.steps li{background:#fff;padding:22px 22px 24px;display:grid;gap:10px;min-width:0;box-shadow:inset 0 0 0 1px var(--line)}
+.steps svg{width:56px;height:56px;color:var(--ink)}
+.steps h3{font-size:1.15rem;font-weight:600}
+.steps p{color:var(--ink-2);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chips span{font-size:.82rem;padding:.2em .7em;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);direction:ltr}
+
+.points{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.points li{padding-inline-start:20px;position:relative;color:var(--ink-2)}
+.points li b{color:var(--ink);font-weight:600}
+.points li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:10px;height:2px;background:var(--coral)}
+
+/* contact */
+.contact{background:var(--bg-2)}
+.contact .split{align-items:start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:grid;gap:6px;min-width:0}
+label{font-size:.9rem;color:var(--ink-2)}
+input,select{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:.75em .9em;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--coral)}
+form .btn,.consent,.sent{grid-column:1/-1}
+.sent{color:var(--ink-2);min-height:1.5em}
+.sent a{color:var(--coral-press);text-decoration:underline;text-underline-offset:.2em}
+.consent{font-size:.82rem;color:var(--ink-2);line-height:1.5}
+@media(max-width:600px){form{grid-template-columns:1fr}}
+.tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.25rem;font-weight:500;font-variant-numeric:tabular-nums;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.3em;direction:ltr}
+
+footer{border-top:1px solid var(--line);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));color:var(--ink-2);font-size:.92rem;background:var(--bg-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px 28px;flex-wrap:wrap}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer .fb{display:grid;gap:8px}
+@media(hover:hover){footer a:hover{color:var(--ink)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;color-scheme:light}
+.back{font-size:.9rem;color:var(--ink-2)}
