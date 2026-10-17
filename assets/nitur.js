@@ -32,7 +32,7 @@
     'pt1b':'Your data.','pt1':'On your server or in the cloud, open to export. No subscription that locks you in.',
     'pt0b':'In soil too.','pt0':'Strawberries in gutters, vegetables in coco, and orchards and field crops as well. Same system, sensors chosen for the crop.',
     'pt2b':'Grows with you.','pt2':'From one gutter to 18,000 plants. Measurement is added only when the agronomy asks for it.',
-    'pt3b':'Built by a grower.','pt3':'NITUR was born in tutaluy’s strawberry greenhouses at Moshav Achituv, and runs there every season.',
+    'pt3b':'Built by a grower.','pt3':'Built from long experience in the field and proven in real growing.',
     'c-h':'Let’s hear<br>what the plant says.','c-l':'What you grow and how many gutters. We’ll come back with a proposal.',
     'f-n':'Name','f-p':'Phone','f-c':'Crop','f-s':'Gutters / dunam','f-btn':'Send on WhatsApp',
     'o1':'Strawberry','o2':'Tomato','o3':'Cucumber','o4':'Pepper','o6':'Orchard','o7':'Field crop','o5':'Other',
