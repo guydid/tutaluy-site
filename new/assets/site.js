@@ -29,13 +29,19 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.reportValidity()) return;
-    var f = form.elements, lines = ['שלום, אשמח לשמוע על מערכת גידול.', 'שם: ' + f.name.value.trim(), 'טלפון: ' + f.phone.value.trim(), 'גידול: ' + f.crop.value];
-    if (f.size.value.trim()) lines.push('שטח: ' + f.size.value.trim() + ' דונם');
+    var en = (document.documentElement.lang || 'he').slice(0, 2) === 'en';
+    var t = en
+      ? { hi: "Hi, I'd like to hear about a soilless growing system.", name: 'Name: ', phone: 'Phone: ', crop: 'Crop: ', area: 'Area: ', unit: ' ha',
+          sent: 'We opened WhatsApp with your details. If it did not open: +972 54-632-4746.' }
+      : { hi: 'שלום, אשמח לשמוע על מערכת גידול.', name: 'שם: ', phone: 'טלפון: ', crop: 'גידול: ', area: 'שטח: ', unit: ' דונם',
+          sent: 'פתחנו את וואטסאפ עם הפרטים. אם לא נפתח: 054-6324746.' };
+    var f = form.elements, lines = [t.hi, t.name + f.name.value.trim(), t.phone + f.phone.value.trim(), t.crop + f.crop.value];
+    if (f.size.value.trim()) lines.push(t.area + f.size.value.trim() + t.unit);
     var url = 'https://wa.me/972546324746?text=' + encodeURIComponent(lines.join('\n'));
     var w = window.open(url, '_blank');
     if (!w) { location.href = url; return; }   /* popup blocked: go in this tab rather than lose the lead */
     w.opener = null;
-    document.getElementById('sent').textContent = 'פתחנו את וואטסאפ עם הפרטים. אם לא נפתח: 054-6324746.';
+    document.getElementById('sent').textContent = t.sent;
   });
 })();
 

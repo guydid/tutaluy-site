@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tutaluy | Soilless Growing Systems</title>
+<meta name="description" content="Hanging gutters, coco and perlite grow bags, fertigation, strawberry plants and variety trials for soilless growing.">
+<meta name="theme-color" content="#121413">
+<meta property="og:title" content="Tutaluy | Soilless Growing Systems">
+<meta property="og:description" content="Hanging gutters, coco and perlite grow bags, fertigation, strawberry plants and variety trials for soilless growing.">
+<meta property="og:image" content="https://tutaluy.com/new/assets/img/exploded.jpg">
+<link rel="alternate" hreflang="he" href="https://tutaluy.com/new/">
+<link rel="alternate" hreflang="en" href="https://tutaluy.com/new/en/">
+<link rel="alternate" hreflang="x-default" href="https://tutaluy.com/new/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&amp;family=Rubik:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="./" aria-label="Tutaluy, home"><span class="t">tut</span>aluy</a>
+  <nav aria-label="Main"><a href="gutters.html">Gutters</a><a href="media.html">Growing media</a><a href="seedlings.html">Plants</a><a href="breeding.html">Varieties</a></nav>
+  <a class="lang" href="../" lang="he" hreflang="he" aria-label="עברית">עב</a>
+  <a class="btn" href="./#contact">Talk to us</a>
+</div></header>
+<main>
+<section class="hero">
+  <img src="../../assets/hero-gutters.jpg" alt="Hanging growing gutters in a greenhouse, with clusters of ripe strawberries" fetchpriority="high">
+  <div class="wrap">
+    <h1>Roots<br>in the air.</h1>
+    <p class="sub">Soilless growing systems for strawberries and vegetables, from the gutter to the plant.</p>
+    <div class="actions"><a class="btn" href="#contact">Talk to us</a><a class="btn ghost" href="#anatomy">How it's built</a></div>
+  </div>
+</section>
+
+<section class="anatomy" id="anatomy">
+  <div class="pin wrap">
+    <div>
+      <h2>What holds a<br>strawberry up.</h2>
+      <p>Five layers, one source. Click a layer.</p>
+    </div>
+    <div class="stage lightbox" id="stage">
+      <div class="frame">
+        <img class="layer l-gutter" src="../assets/img/gutter.webp" alt="">
+        <img class="layer l-bag" src="../assets/img/bag.webp" alt="">
+        <img class="layer l-drip" src="../assets/img/drip.webp" alt="">
+        <img class="layer l-plants" src="../assets/img/plants.webp" alt="">
+        <img class="layer l-fruit" src="../assets/img/fruit.webp" alt="">
+        <img class="master" src="../assets/img/master.webp" alt="The Tutaluy growing system: gutter, grow bag, drip line and strawberry plants">
+      </div>
+      <a class="band b-fruit" href="breeding.html" data-layer="fruit"><span class="callout">Varieties</span></a>
+      <a class="band b-plants" href="seedlings.html" data-layer="plants"><span class="callout">Plants</span></a>
+      <a class="band b-drip" href="media.html#irrigation" data-layer="drip"><span class="callout">Fertigation</span></a>
+      <a class="band b-bag" href="media.html" data-layer="bag"><span class="callout">Growing media</span></a>
+      <a class="band b-gutter" href="gutters.html" data-layer="gutter"><span class="callout">Gutters</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>From nursery<br>to harvest.</h2>
+    <div class="reel">
+      <a href="gutters.html"><img src="../../assets/field-3.jpg" alt="Installing growing gutters in a greenhouse" loading="lazy"><div class="cap"><h3>Gutters</h3></div></a>
+      <a href="media.html"><img src="../../assets/tomato-coco.jpg" alt="Tutaluy grow bags with tomato plants" loading="lazy"><div class="cap"><h3>Growing media</h3></div></a>
+      <a href="seedlings.html"><img src="../../assets/nursery.jpg" alt="Strawberry plants in the nursery" loading="lazy"><div class="cap"><h3>Plants</h3></div></a>
+      <a href="breeding.html"><img src="../../assets/field-4.jpg" alt="Strawberry clusters hanging from a gutter" loading="lazy"><div class="cap"><h3>Varieties</h3></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap split">
+    <div>
+      <h2>Let's build<br>your greenhouse.</h2>
+      <p class="lede">Tell us the crop and the area. We'll come back with a proposal.</p>
+      <p style="margin-top:22px"><a class="tel" href="tel:+972546324746">+972 54-632-4746</a></p>
+    </div>
+    <form id="leadForm" novalidate>
+      <div class="f"><label for="n">Name</label><input id="n" name="name" autocomplete="name" required></div>
+      <div class="f"><label for="p">Phone (with country code)</label><input id="p" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9+\-\s()]{8,20}" title="Phone number, e.g. +31 6 1234 5678" placeholder="+31 6 1234 5678" required></div>
+      <div class="f"><label for="c">Crop</label><select id="c" name="crop" required><option value="" disabled selected>Choose a crop</option><option>Strawberry</option><option>Tomato</option><option>Cucumber</option><option>Pepper</option><option>Other</option></select></div>
+      <div class="f"><label for="s">Area in hectares (optional)</label><input id="s" name="size" inputmode="decimal"></div>
+      <button class="btn" type="submit">Send on WhatsApp</button>
+      <p class="sent" id="sent" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">
+  <span>© Tutaluy Ltd. · HaRimon 91, Moshav Achituv, Israel</span>
+  <nav aria-label="Sections"><a href="gutters.html">Gutters</a><a href="media.html">Growing media</a><a href="seedlings.html">Plants</a><a href="breeding.html">Varieties</a></nav>
+</div></footer>
+<div class="dock" aria-label="Contact"><a class="btn" href="https://wa.me/972546324746?text=Hi%2C%20I%27d%20like%20to%20hear%20about%20a%20soilless%20growing%20system." target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" href="tel:+972546324746">Call</a></div>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

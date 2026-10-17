@@ -36,11 +36,18 @@ header nav{display:flex;gap:26px;margin-inline-start:auto;color:var(--ink)}
 header nav a,footer nav a{display:inline-flex;align-items:center;min-height:44px}
 header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -2px 0 var(--coral)}
 @media(hover:hover) and (pointer:fine){header nav a:hover{color:#fff}}
+/* language switch: a quiet pill next to the CTA; the other language's own script is the label */
+.lang{display:inline-flex;align-items:center;justify-content:center;min-height:36px;min-width:44px;padding:0 .8em;border-radius:999px;
+  font-size:.88rem;font-weight:500;letter-spacing:.02em;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(237,238,234,.3);
+  margin-inline-start:auto;transition:background-color .2s ease}
+header nav + .lang{margin-inline-start:0}
+@media(hover:hover) and (pointer:fine){.lang:hover{background:rgba(237,238,234,.1)}}
 @media(max-width:900px){
   header .bar{flex-wrap:wrap;height:auto;padding-top:12px;gap:10px 16px}
-  header .btn{margin-inline-start:auto;min-height:44px;padding:0 1.1em}
+  header .lang{margin-inline-start:auto}
+  header .btn{margin-inline-start:0;min-height:44px;padding:0 1.1em}
   header nav{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;font-size:.95rem;scrollbar-width:none;
-    -webkit-mask-image:linear-gradient(to left,transparent,#000 28px);mask-image:linear-gradient(to left,transparent,#000 28px)}
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 28px);mask-image:linear-gradient(to right,transparent,#000 28px)}
   header nav::-webkit-scrollbar{display:none}
   header nav a{white-space:nowrap}
 }
@@ -221,3 +228,14 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   body{padding-bottom:76px}
 }
 @media(prefers-reduced-motion:reduce){.dock{transition:none}}
+
+/* ---------- English pages (dir=ltr): the few physical-side rules above, mirrored ---------- */
+[dir=ltr] .path li{padding:22px 0 0 18px}
+@media(max-width:700px){[dir=ltr] .path li{padding:0 0 0 22px}}
+@media(max-width:900px){[dir=ltr] header nav{-webkit-mask-image:linear-gradient(to left,transparent,#000 28px);mask-image:linear-gradient(to left,transparent,#000 28px)}}
+[dir=ltr] .hero h1{letter-spacing:-.01em}
+[dir=ltr] .hero .sub{max-width:40ch}
+[dir=ltr] .pin h2{font-size:clamp(2.8rem,5.2vw,4.6rem)}
+[dir=ltr] .pin p{max-width:34ch}
+[dir=ltr] .hero.page h1{font-size:clamp(3.4rem,8vw,6.8rem)}
+@media(min-width:861px){[dir=ltr] .hero.page .wrap{padding-inline-end:calc(min(40vw,520px) + clamp(20px,4vw,48px) + 36px)}}
