@@ -8,7 +8,7 @@
     'pr2':'Less<br><em>fertiliser.</em>','pr2p':'Drain EC shows what the plant really eats. What is not taken up is not given.',
     'pr3':'More<br><em>yield.</em>','pr3p':'A plant without stress does not drop fruit. Steady substrate, steady harvest.',
     'pr4':'Simple<br><em>to use.</em>','pr4p':'One screen on your phone, and a conversation with NITUR, your agent.',
-    'ai-h':'A personal assistant<br>that knows your greenhouse.','ai-l':'An assistant that knows your plots, varieties, irrigation and fertigation. Ask it like an agronomist who was there every season.',
+    'ai-h':'A personal assistant<br>that knows your plants.','ai-l':'An assistant that knows your plots, varieties, irrigation and fertigation. Ask it like an agronomist who was there every season.',
     'a1t':'Learns','a1h':'How you grow','a1p':'Irrigation, fertigation, varieties and planting dates. Every season it knows you better.',
     'a2t':'Listens','a2h':'What the plant needs','a2p':'The sensors say what happens in the substrate; the assistant links it to weather and growth stage.',
     'a3t':'Integrates','a3h':'Into one result','a3p':'A recommendation and an explanation, ready for the controller. You decide, it remembers.',
