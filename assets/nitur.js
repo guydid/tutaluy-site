@@ -49,6 +49,9 @@
     var d=lang==='en'?EN:HE;
     document.querySelectorAll('[data-i]').forEach(function(el){var k=el.getAttribute('data-i');if(d[k]!=null)el.innerHTML=d[k];});
     document.documentElement.dir=lang==='en'?'ltr':'rtl';document.documentElement.lang=lang;
+    // The dashboard is another origin and can't read nitur-lang, so the login
+    // link carries the choice; the dashboard's login page follows it.
+    document.querySelectorAll('a.login').forEach(function(a){a.href='https://dashboard.nitur-ai.com/v2?lang='+lang;});
     btn.textContent=lang==='en'?'עב':'EN';btn.setAttribute('aria-label',lang==='en'?'עברית':'English');
   }
   btn.addEventListener('click',function(){lang=lang==='en'?'he':'en';try{localStorage.setItem('nitur-lang',lang);}catch(e){}apply();});
