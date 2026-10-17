@@ -36,7 +36,7 @@
     'c-h':'Let’s hear<br>what the plant says.','c-l':'What you grow and how many gutters. We’ll come back with a proposal.',
     'f-n':'Name','f-p':'Phone','f-c':'Crop','f-s':'Gutters / dunam','f-btn':'Send on WhatsApp',
     'o1':'Strawberry','o2':'Tomato','o3':'Cucumber','o4':'Pepper','o6':'Orchard','o7':'Field crop','o5':'Other',
-    'consent':'This opens a WhatsApp link with the details you filled in; we use them only to get back to you. <a href="../en/privacy.html">Privacy policy</a>.',
+    'consent':'This opens a WhatsApp link with the details you filled in; we use them only to get back to you. <a href="https://tutaluy.com/en/privacy.html">Privacy policy</a>.',
     'foot':'© NITUR · HaRimon 91, Moshav Achituv · by tutaluy'
   };
   var HE={};
