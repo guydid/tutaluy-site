@@ -78,17 +78,6 @@
     x.beginPath();data.forEach(function(v,i){i?x.lineTo(px(i),py(v)):x.moveTo(px(i),py(v));});x.strokeStyle=col;x.lineWidth=2;x.lineJoin='round';x.stroke();
     var lx=px(data.length-1),ly=py(data[data.length-1]);x.beginPath();x.arc(lx,ly,3.5,0,Math.PI*2);x.fillStyle=col;x.fill();}
 
-  /* hero: substrate moisture over a day — a sawtooth, each irrigation a step up, drying between */
-  var hc=document.getElementById('heroChart'),hv=document.getElementById('heroVal'),hd=[];
-  (function(){var v=58;for(var i=0;i<96;i++){if(i%14===0&&i>0)v+=9;v-=.62;hd.push(v);}})();
-  function drawHero(){var g=fit(hc);if(!g)return;var x=g.x;x.clearRect(0,0,g.w,g.h);
-    x.strokeStyle='rgba(237,238,234,.1)';x.lineWidth=1;for(var i=1;i<4;i++){x.beginPath();x.moveTo(0,g.h*i/4);x.lineTo(g.w,g.h*i/4);x.stroke();}
-    line(x,g.w,g.h,hd,'#00C062','rgba(0,192,98,.18)',8);
-    hv.textContent=Math.round(hd[hd.length-1]);}
-  drawHero();
-  var tick=0;
-  if(!reduce)setInterval(function(){tick++;var last=hd[hd.length-1];hd.push(tick%14===0?last+9:last-.62);hd.shift();drawHero();},1500);
-
   /* behind the hero: gentle heartbeat lines, like the one running through the logo */
   var sky=document.getElementById('sky'),skyT=0;
   function beat(x,w,h,y,amp,phase,period,col,lw){
@@ -119,5 +108,5 @@
     else data=series(48,d[0],d[1],d[2]);
     line(x,g.w,g.h,data,d[3],d[3]==='#EDEEEA'?'rgba(237,238,234,.08)':'rgba(242,193,78,.14)',4);});}
   drawTiles();
-  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){drawSky();drawHero();drawTiles();},120);});
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){drawSky();drawTiles();},120);});
 })();
