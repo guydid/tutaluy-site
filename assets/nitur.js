@@ -28,7 +28,7 @@
     'how-h':'A solution,<br>not equipment.','how-l':'We measure what the crop needs. Installation is part of the project.',
     'st1h':'Measuring in substrate or soil','st1p':'Moisture, pH, EC, nutrition, temperature and drainage.',
     'st2h':'Collecting and learning','st2p':'The data goes to the cloud, and the system learns your greenhouse from it.',
-    'st3h':'Screen and assistant','st3p':'Phone and desktop. What is happening now, what happened overnight, and an alert when something drifts. Reads from most irrigation controllers.',
+    'st3h':'Screen and assistant','st3p':'Phone and desktop. What is happening now, what happened overnight, and an alert when something drifts. Connects to most controllers on the market.',
     'pt1b':'Your data.','pt1':'On your server or in the cloud, open to export.',
     'pt0b':'In soil too.','pt0':'Strawberries, vegetables, orchards and field crops. Sensors chosen for the crop.',
     'pt2b':'Grows with you.','pt2':'From one gutter to 18,000 plants.',
