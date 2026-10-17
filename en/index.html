@@ -12,9 +12,6 @@
 <link rel="alternate" hreflang="he" href="https://tutaluy.com/">
 <link rel="alternate" hreflang="en" href="https://tutaluy.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://tutaluy.com/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&amp;family=Rubik:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
@@ -48,11 +45,11 @@
         <img class="layer l-fruit" src="../assets/img/fruit.webp" alt="">
         <img class="master" src="../assets/img/master.webp" alt="The Tutaluy growing system: gutter, grow bag, drip line and strawberry plants">
       </div>
-      <a class="band b-fruit" href="breeding.html" data-layer="fruit"><span class="callout">Varieties</span></a>
-      <a class="band b-plants" href="seedlings.html" data-layer="plants"><span class="callout">Plants</span></a>
-      <a class="band b-drip" href="media.html#irrigation" data-layer="drip"><span class="callout">Fertigation</span></a>
-      <a class="band b-bag" href="media.html" data-layer="bag"><span class="callout">Growing media</span></a>
-      <a class="band b-gutter" href="gutters.html" data-layer="gutter"><span class="callout">Gutters</span></a>
+      <a class="band b-fruit" href="breeding.html" data-layer="fruit" aria-label="Varieties"><span class="callout">Varieties</span></a>
+      <a class="band b-plants" href="seedlings.html" data-layer="plants" aria-label="Plants"><span class="callout">Plants</span></a>
+      <a class="band b-drip" href="media.html#irrigation" data-layer="drip" aria-label="Fertigation"><span class="callout">Fertigation</span></a>
+      <a class="band b-bag" href="media.html" data-layer="bag" aria-label="Growing media"><span class="callout">Growing media</span></a>
+      <a class="band b-gutter" href="gutters.html" data-layer="gutter" aria-label="Gutters"><span class="callout">Gutters</span></a>
     </div>
   </div>
 </section>
@@ -82,6 +79,7 @@
       <div class="f"><label for="c">Crop</label><select id="c" name="crop" required><option value="" disabled selected>Choose a crop</option><option>Strawberry</option><option>Tomato</option><option>Cucumber</option><option>Pepper</option><option>Other</option></select></div>
       <div class="f"><label for="s">Area in hectares (optional)</label><input id="s" name="size" inputmode="decimal"></div>
       <button class="btn" type="submit">Send on WhatsApp</button>
+      <p class="consent">This opens a WhatsApp message with the details you entered; we use them only to get back to you. <a href="privacy.html">Privacy notice</a>.</p>
       <p class="sent" id="sent" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -89,7 +87,7 @@
 </main>
 <footer><div class="wrap">
   <div class="fbrand"><img src="../assets/img/logo-full.webp" alt="tutaluy — soilless projects" width="720" height="307" loading="lazy" decoding="async"><span>© Tutaluy Ltd. · HaRimon 91, Moshav Achituv, Israel</span></div>
-  <nav aria-label="Sections"><a href="gutters.html">Gutters</a><a href="media.html">Growing media</a><a href="seedlings.html">Plants</a><a href="breeding.html">Varieties</a></nav>
+  <nav aria-label="Sections"><a href="gutters.html">Gutters</a><a href="media.html">Growing media</a><a href="seedlings.html">Plants</a><a href="breeding.html">Varieties</a><a href="privacy.html">Privacy</a><a href="accessibility.html">Accessibility</a></nav>
 </div></footer>
 <div class="dock" aria-label="Contact"><a class="btn" href="https://wa.me/972546324746?text=Hi%2C%20I%27d%20like%20to%20hear%20about%20a%20soilless%20growing%20system." target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" href="tel:+972546324746">Call</a></div>
 <script src="../assets/site.js" defer></script>

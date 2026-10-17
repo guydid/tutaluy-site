@@ -1,3 +1,4 @@
+@import url("fonts.css");
 /* tutaluy, direction "greenhouse at night": dark, photographic, one scrubbed explode on the home page.
    Shape rule: controls are pills, photographs and product panels are square-cornered. */
 :root{
@@ -209,6 +210,8 @@ input:focus-visible,select:focus-visible{outline:2px solid var(--coral);outline-
 .sent:empty{display:none}
 form .btn{grid-column:1/-1}
 .sent{grid-column:1/-1;color:var(--ink-2)}
+.consent{grid-column:1/-1;font-size:.82rem;color:var(--ink-2);line-height:1.5}
+.consent a{text-decoration:underline;text-underline-offset:.2em}
 @media(max-width:600px){form{grid-template-columns:1fr}}
 
 footer{border-top:1px solid var(--line);padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));color:var(--ink-2);font-size:.92rem}
