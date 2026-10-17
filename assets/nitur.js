@@ -11,24 +11,24 @@
     'ai-h':'A personal assistant<br>that knows your greenhouse.','ai-l':'The system learns your way of growing and the plant\u2019s needs, and builds an assistant that knows your plots, varieties, irrigation and fertigation. Ask it the way you would ask an agronomist who was there every season.',
     'a1t':'Learns','a1h':'How you grow','a1p':'Irrigation timing, fertiliser doses, varieties and planting dates. Every season it knows you better.',
     'a2t':'Listens','a2h':'What the plant needs','a2p':'The sensors say what happens in the substrate; the assistant links it to weather, growth stage and variety.',
-    'a3t':'Integrates','a3h':'Into one result','a3p':'A recommendation, an explanation, and if you want, an action on the controller. You decide, it remembers.',
+    'a3t':'Integrates','a3h':'Into one result','a3p':'A recommendation and an explanation, ready to carry over to the controller. You decide, it remembers.',
     'ch-top':'Assistant · Greenhouse 91',
     'ch-time':'real message',
     'm4':'Quick review of today.',
-    'm5':'Today went fine. Two things to watch:<br><b>Plot 5:</b> morning flow was low, only 300 L/h, and an error showed up at the end of the irrigation. Worth checking whether the filter or drippers are blocked.<br><b>Plot 4:</b> moisture is high and steady, 85\u201386%, but the measured bag barely drains after the morning, only 0.12 L. The row is probably still rewetting after the dry spell; I\u2019ll check again tomorrow morning.<br><b>Plot 3:</b> drain climbed through the day, 25% in the morning and 41\u201343% at noon, still under 50%. If it continues tomorrow we drop one pulse. <b>Plot 2:</b> the reduced pulses ran as planned. <b>Plot 1:</b> the noon pulse did its job, moisture stayed at 60\u201361.7% all day, well above the threshold. <b>Plots 6\u20137:</b> fine.',
+    'm5':'Today went fine. Two things to watch:<br><b>Plot 5:</b> the morning irrigation delivered only 300 L over 60 minutes, a flow of just 0.3 m\u00b3/h, and an error showed up at the end of the irrigation. Worth checking whether the filter or drippers are blocked.<br><b>Plot 4:</b> moisture is high and steady, 85\u201386%, but the measured bag barely drains after the morning, only 0.12 L. The row is probably still rewetting after the dry spell; I\u2019ll check again tomorrow morning.<br><b>Plot 3:</b> drain climbed through the day, 25% in the morning and 41\u201343% at noon, still under 50%. If it continues tomorrow we drop one pulse. <b>Plot 2:</b> the reduced pulses ran as planned. <b>Plot 1:</b> the noon pulse did its job, moisture stayed at 60\u201361.7% all day, well above the threshold. <b>Plots 6\u20137:</b> fine.',
     'ask':'Ask the assistant\u2026',
     'day-h':'One day<br>in the greenhouse.','day-l':'What you see on the screen, and what you do with it.',
-    'd1h':'Morning','d1p':'Last night on the screen: substrate down to 58% moisture, drain EC steady. The first irrigation goes out on its own at sunrise.',
-    'd2h':'Noon','d2p':'Strong sun, the plants drink fast. The gap between irrigations shortens with the radiation, with nobody touching the controller.',
+    'd1h':'Morning','d1p':'Last night on the screen: substrate down to 58% moisture, drain EC steady. The assistant prepares today\u2019s irrigation recipe; you approve it and update the controller.',
+    'd2h':'Noon','d2p':'Strong sun, the plants drink fast. The assistant recommends shortening the gap between irrigations with the radiation; you approve and update the controller.',
     'd3h':'Evening','d3p':'Drain in gutter 2 is below target. An alert to your phone, and tomorrow you check a blocked dripper instead of finding out in the fruit.',
     's-top':'Greenhouse 91 · Strawberry','s-time':'Sat · 17:45',
-    't1':'Substrate moisture','t2':'Drain EC','t3':'Drain · gutter 2','t3s':'target 20–30','t4':'Substrate temp','t5':'Water today','t5s':'7 irrigations','t6':'Drain pH',
+    't1':'Substrate moisture','t2':'Drain EC','t2s':'target 1.8\u20132.2','t3':'Drain · gutter 2','t3s':'target 20–30','t4':'Substrate temp','t5':'Water today','t5s':'7 irrigations','t6':'Drain pH',
     'ok':'In range','low':'Below target','al-b':'Gutter 2','al-t':'Drain 14%, three irrigations in a row. Check the drippers.',
     'note':'Demo data. In your system the screen shows your own greenhouse.',
     'how-h':'A solution,<br>not equipment.','how-l':'What gets measured follows the agronomic need of the crop, the variety and the stage. Installation is part of the project.',
     'st1h':'Measuring in the substrate','st1p':'Moisture, nutrition and temperature in the bag, and drainage at the end of the gutter. Sensors are fitted to the crop, not the other way round.',
     'st2h':'Collecting and learning','st2p':'The data flows from the greenhouse to the cloud, and the system learns your greenhouse from it. Nothing for you to manage.',
-    'st3h':'Screen and assistant','st3p':'Phone and desktop. What is happening now, what happened overnight, and an alert when something drifts. Connects to most irrigation controllers on the market.',
+    'st3h':'Screen and assistant','st3p':'Phone and desktop. What is happening now, what happened overnight, and an alert when something drifts. Reads from most irrigation controllers on the market.',
     'pt1b':'Your data.','pt1':'On your server or in the cloud, open to export. No subscription that locks you in.',
     'pt0b':'In soil too.','pt0':'Strawberries in gutters, vegetables in coco, and orchards and field crops as well. Same system, sensors chosen for the crop.',
     'pt2b':'Grows with you.','pt2':'From one gutter to 18,000 plants. Measurement is added only when the agronomy asks for it.',
@@ -101,7 +101,7 @@
   }
   drawSky();
 
-  var defs={vwc:[61,6,23,'#EDEEEA'],ec:[2.9,.6,3,'#EDEEEA'],drain:[14,8,5,'#F2C14E'],temp:[22.6,3,17,'#EDEEEA'],water:[0,0,1,'#EDEEEA'],ph:[5.8,.3,11,'#EDEEEA']};
+  var defs={vwc:[61,6,23,'#EDEEEA'],ec:[2.0,.3,3,'#EDEEEA'],drain:[14,8,5,'#F2C14E'],temp:[22.6,3,17,'#EDEEEA'],water:[0,0,1,'#EDEEEA'],ph:[5.8,.3,11,'#EDEEEA']};
   function drawTiles(){document.querySelectorAll('.tile').forEach(function(t){var k=t.getAttribute('data-k'),d=defs[k],c=t.querySelector('canvas'),g=fit(c);if(!g)return;
     var x=g.x;x.clearRect(0,0,g.w,g.h);var data;
     if(k==='water'){data=[];var acc=0;for(var i=0;i<48;i++){if(i%7===3)acc+=445;data.push(acc);}}
