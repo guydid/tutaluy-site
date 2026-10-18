@@ -247,3 +247,4 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 @media(max-width:900px){.brand img{height:34px}}
 .fbrand{display:grid;gap:12px}
 .fbrand img{height:52px;width:auto;opacity:.92}
+.fbrand a{justify-self:start;display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.3em}
