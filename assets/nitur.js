@@ -24,7 +24,7 @@
     's-top':'Greenhouse 91 · Strawberry','s-time':'Sat · 17:45',
     't1':'Substrate moisture','t2':'Drain EC','t2s':'target 1.8\u20132.2','t3':'Drain · gutter 2','t3s':'target 20–30','t4':'Substrate temperature','t5':'Daily water use','t5s':'7 irrigations','t6':'Drain pH',
     'ok':'In range','low':'Below target','al-b':'Gutter 2','al-t':'14% drainage over three consecutive irrigations. Check the drippers.',
-    'note':'Demo data. The live system shows only your own greenhouse.',
+    'note':'A real screen from the system, greenhouse 91.',
     'how-h':'A complete solution,<br>not just equipment.','how-l':'We measure only what the crop needs. Installation is an integral part of the project.',
     'st1h':'Measuring in substrate or soil','st1p':'Moisture, pH, EC, nutrition, temperature and drainage.',
     'st2h':'Data collection and learning','st2p':'Integrates with most common irrigation controllers. The data streams to the cloud, and the system learns the characteristics of your greenhouse.',

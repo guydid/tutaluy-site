@@ -98,6 +98,10 @@ header nav a{display:inline-flex;align-items:center;min-height:44px}
 
 /* a day in the greenhouse: the screen in three moments */
 .day{margin-top:36px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+#day .day{grid-template-columns:1fr;gap:28px}
+.shot{margin:0;background:var(--panel);padding:10px;box-shadow:0 24px 70px rgba(27,30,28,.22)}
+.shot-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.shot img{display:block;min-width:900px;width:100%;height:auto}
 @media(max-width:860px){.day{grid-template-columns:1fr}}
 .path{list-style:none;margin:0;padding:0;display:grid;gap:0;border-inline-start:1px solid var(--line)}
 .path li{position:relative;padding:0 22px 26px 0;min-width:0}
