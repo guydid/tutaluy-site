@@ -253,3 +253,36 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .nlink img{height:17px;width:auto;max-width:none}
 footer .nlink img{height:15px;opacity:.9}
 @media(max-width:900px){header nav{padding-inline-end:28px}}
+
+/* ---------- day / night switch ---------- */
+.theme{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border:0;border-radius:999px;cursor:pointer;
+  background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(237,238,234,.3);margin-inline-start:8px;transition:background-color .2s ease,transform 160ms var(--ease-out)}
+.theme:active{transform:scale(.94)}
+@media(hover:hover) and (pointer:fine){.theme:hover{background:rgba(237,238,234,.1)}}
+@media(max-width:900px){.theme{width:36px;height:36px}}
+
+/* ---------- day: the same system on a daylight greenhouse palette ---------- */
+:root[data-theme=light]{--bg:#F3F2EE;--surface:#FFFFFF;--ink:#161917;--ink-2:#5A605A;--line:rgba(22,25,23,.14);--studio:#E7E4E0;color-scheme:light}
+[data-theme=light] ::selection{background:rgba(245,105,107,.28)}
+[data-theme=light] .btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(22,25,23,.4)}
+[data-theme=light] .lang,[data-theme=light] .theme{box-shadow:inset 0 0 0 1px rgba(22,25,23,.28)}
+@media(hover:hover) and (pointer:fine){
+  [data-theme=light] .btn.ghost:hover,[data-theme=light] .lang:hover,[data-theme=light] .theme:hover{background:rgba(22,25,23,.06)}
+  [data-theme=light] header nav a:hover{color:var(--coral)}
+  [data-theme=light] .chip:not(.on):hover{background:rgba(22,25,23,.06)}
+}
+[data-theme=light] header{background:linear-gradient(to bottom,rgba(243,242,238,.95),rgba(243,242,238,.7) 60%,rgba(243,242,238,0))}
+[data-theme=light] header nav a[aria-current=page]{color:var(--ink)}
+[data-theme=light] .hero::after{background:linear-gradient(to top,rgba(243,242,238,.97) 0%,rgba(243,242,238,.82) 22%,rgba(243,242,238,.25) 48%,rgba(243,242,238,0) 70%)}
+[data-theme=light] .hero .sub{color:var(--ink-2)}
+[data-theme=light] .hero .obj{box-shadow:0 24px 60px rgba(22,25,23,.18)}
+[data-theme=light] .lightbox{box-shadow:0 30px 70px rgba(22,25,23,.16),0 0 0 1px rgba(22,25,23,.06)}
+[data-theme=light] .callout{background:rgba(22,25,23,.88);color:#F3F2EE}
+[data-theme=light] .reel .cap{color:#F3F2EE}
+[data-theme=light] .reel{scrollbar-color:rgba(22,25,23,.25) transparent}
+[data-theme=light] input,[data-theme=light] select{border-color:rgba(22,25,23,.18)}
+[data-theme=light] .dock,[data-theme=light] .mbar{background:rgba(243,242,238,.94)}
+[data-theme=light] .chip{box-shadow:inset 0 0 0 1px rgba(22,25,23,.3)}
+[data-theme=light] .chip.on{box-shadow:none}
+/* logos: hidden in day mode until the script has swapped in the dark-ink artwork, so the white wordmark never flashes */
+[data-theme=light] .brand img:not([data-day]),[data-theme=light] .fbrand img:not([data-day]){visibility:hidden}
