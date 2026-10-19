@@ -33,7 +33,7 @@
     'pt0b':'Suits soil too.','pt0':'Orchards, field crops and more, with sensors matched to the crop.',
     'pt2b':'Grows with your business.','pt2':'From a single gutter to arrays of tens of thousands of plants.',
     'pt3b':'Built on hands-on experience.','pt3':'Developed in the field and proven under real growing conditions.',
-    'c-h':'Let’s hear<br>what the plant says.','c-l':'Tell us what you grow and how many gutters you have, and we’ll come back with a tailored proposal.',
+    'c-h':'Let’s hear<br>what the plant says.','c-l':'Tell us what you grow, and we’ll come back with a tailored proposal.',
     'f-n':'Name','f-p':'Phone','f-c':'Crop','f-s':'Gutters / dunam','f-btn':'Send on WhatsApp',
     'o1':'Strawberry','o2':'Tomato','o3':'Cucumber','o4':'Pepper','o6':'Orchard','o7':'Field crop','o5':'Other',
     'consent':'This opens a WhatsApp link with the details you entered; we use them only to get in touch with you. <a href="../en/privacy.html">Privacy policy</a>.',
