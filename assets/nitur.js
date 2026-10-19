@@ -20,7 +20,7 @@
     'day-h':'A sample<br>day.','day-l':'What you see on the screen, and what you do about it.',
     'd1h':'Morning','d1p':'Overnight data on the screen. The assistant drafts today’s irrigation plan; you approve it and update the controller.',
     'd2h':'Noon','d2p':'Strong sunlight and faster uptake by the plants. The assistant recommends shorter irrigation intervals; you approve.',
-    'd3h':'Evening','d3p':'Low drainage detected in gutter 2. An alert goes straight to your phone; tomorrow you check the dripper, before the fruit is affected.',
+    'd3h':'Evening','d3p':'All units scanned. All quiet.',
     's-top':'Greenhouse 91 · Strawberry','s-time':'Sat · 17:45',
     't1':'Substrate moisture','t2':'Drain EC','t2s':'target 1.8\u20132.2','t3':'Drain · gutter 2','t3s':'target 20–30','t4':'Substrate temperature','t5':'Daily water use','t5s':'7 irrigations','t6':'Drain pH',
     'ok':'In range','low':'Below target','al-b':'Gutter 2','al-t':'14% drainage over three consecutive irrigations. Check the drippers.',
